@@ -1,27 +1,7 @@
-#include "nmea_parser.h"
+#include "gpsLib.h"
+#include <stdlib.h>
 
-/*
-  CUSTOM PACKET(S)
-  
-  $GNOST,(filtered),(lat),(long),(wind speed),(wind dir),(heading),(boom angle),(timestamp),*(checksum) <LF>
-  
-  filtered   : is the data processed (1) or raw (0)
-  lat        : latitude accurate to 2 decimal places
-  long       : longitude accurate to 2 decimal places
-  wind speed : wind speed in knots likely accurate to 2 decimal places
-  wind dir   : wind dir in degrees likely accurate to 2 decimal places
-  heading    : heading in degrees likely accurate to 0 decimal places
-  boom angle : angle of the boom in degrees likely accurate to 0 decimal places
-  timestamp  : hhmmss
-  checksum   : XOR of all bytes between $ and *
-  <LF>       : line feed (newline)
-  
-  any value that is -1 is invalid
-  each character is 1 byte
-
-*/
-
-float longitude=0, latitude=0, alt=0, hdop=0;
+float longitude=0, latitude=0, alt=0;
 int time[3];
 int satellites=0, fix=0;
 int i = 0;
@@ -29,6 +9,7 @@ char msg[79];
 char tempMsg[79];
 char printmsg[200];
 char temp[30];
+
 
 void processSentence(char *str){
         strcpy(tempMsg, str);
@@ -221,14 +202,8 @@ void processGSA(char *str){
 	// tok = sentence #
 	tok = strtok(NULL, ",");
 	// tok = num satellites in view
-    if(tok != NULL)
-  		satellites = atoi(tok);
-  	tok = strtok(NULL, ",");
-  	// tok = Position dilution of precision (spherical)
-  	tok = strtok(NULL, ",");
-  	//tok = horizontal dilution of precision
-  	if(tok != NULL)
-  		hdop = atof(tok);
+        if(tok != NULL)
+	  satellites = atoi(tok);
 }
 
 float getLong(void){

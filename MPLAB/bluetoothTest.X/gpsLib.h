@@ -1,3 +1,23 @@
+/* ************************************************************************** */
+/** Descriptive File Name
+
+  @Company
+    Company Name
+
+  @File Name
+    filename.h
+
+  @Summary
+    Brief description of the file.
+
+  @Description
+    Describe the purpose of this file.
+ */
+/* ************************************************************************** */
+
+#ifndef _GPSLIB_H    /* Guard against multiple inclusion */
+#define _GPSLIB_H
+
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -24,26 +44,26 @@
 */
 
 void processSentence(char *str);
-
-void processGGA(char *str);
-
-void processGSA(char *str);
-
 void createGNOST(char *str);
-
 int calcCS(char *str);
-
 int checkCS(char *str);
-
-double getLong(void);
-
-double getLat(void);
-
-double getAlt(void);
-
+void processGGA(char *str);
+void processGSA(char *str);
+float getLong(void);
+float getLat(void);
+float getAlt(void);
 int getHour(void);
-
 int getMinute(void);
-
 int getSecond(void);
 
+
+    /* Provide C++ Compatibility */
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* GPSLIB_H */
+
+/* *****************************************************************************
+ End of File
+ */
