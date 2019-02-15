@@ -3,15 +3,15 @@
   <executable name="dist/default/production/incap.X.production.elf">                 
     <memory name="program">                 
       <units>bytes</units>                 
-      <length>138752</length>                 
-      <used>23016</used>                     
-      <free>115736</free>                     
+      <length>126464</length>                 
+      <used>27396</used>                     
+      <free>99068</free>                     
     </memory>                              
     <memory name="data">              
       <units>bytes</units>                 
       <length>16384</length>                 
-      <used>1852</used>                     
-      <free>14532</free>                     
+      <used>1856</used>                     
+      <free>14528</free>                     
     </memory>                              
   </executable>                            
 </project>                                 

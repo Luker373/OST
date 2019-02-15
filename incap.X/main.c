@@ -17,10 +17,15 @@ int main(void) {
     BOARD_Init();
     OledInit();
     INCAP_Init();
-    char str[10] = "";
+    
+    char str[100] = "hi";
+    float freq;
 
     while (1) {
-        sprintf(str, "%d", INCAP_getFreq());
+        //printf("%d\r\n", freq);
+        freq = INCAP_getFreq()/1000.000;
+        //printf("%e\n", a);
+        sprintf(str, "%0.3f Hz\n", freq);
         OledClear(OLED_COLOR_BLACK);
         OledDrawString(str);
         OledUpdate();

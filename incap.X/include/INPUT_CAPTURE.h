@@ -5,4 +5,4 @@
 
 char INCAP_Init(void);
 
-float INCAP_getFreq(void);
+unsigned int INCAP_getFreq(void);
