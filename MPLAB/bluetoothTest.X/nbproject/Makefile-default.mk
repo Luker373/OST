@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=main.c serialcomm.c C:/Users/Luke_LPT/MPLABXProjects/bluetoothTest.X/gpsLib.c
+SOURCEFILES_QUOTED_IF_SPACED=main.c serialcomm.c C:/Users/Luke_LPT/MPLABXProjects/bluetoothTest.X/gpsLib.c C:/Users/Luke_LPT/MPLABXProjects/bluetoothTest.X/serial.c C:/Users/Luke_LPT/MPLABXProjects/bluetoothTest.X/BOARD.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.o ${OBJECTDIR}/serialcomm.o ${OBJECTDIR}/_ext/1708633301/gpsLib.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/main.o.d ${OBJECTDIR}/serialcomm.o.d ${OBJECTDIR}/_ext/1708633301/gpsLib.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.o ${OBJECTDIR}/serialcomm.o ${OBJECTDIR}/_ext/1708633301/gpsLib.o ${OBJECTDIR}/_ext/1708633301/serial.o ${OBJECTDIR}/_ext/1708633301/BOARD.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/main.o.d ${OBJECTDIR}/serialcomm.o.d ${OBJECTDIR}/_ext/1708633301/gpsLib.o.d ${OBJECTDIR}/_ext/1708633301/serial.o.d ${OBJECTDIR}/_ext/1708633301/BOARD.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/main.o ${OBJECTDIR}/serialcomm.o ${OBJECTDIR}/_ext/1708633301/gpsLib.o
+OBJECTFILES=${OBJECTDIR}/main.o ${OBJECTDIR}/serialcomm.o ${OBJECTDIR}/_ext/1708633301/gpsLib.o ${OBJECTDIR}/_ext/1708633301/serial.o ${OBJECTDIR}/_ext/1708633301/BOARD.o
 
 # Source Files
-SOURCEFILES=main.c serialcomm.c C:/Users/Luke_LPT/MPLABXProjects/bluetoothTest.X/gpsLib.c
+SOURCEFILES=main.c serialcomm.c C:/Users/Luke_LPT/MPLABXProjects/bluetoothTest.X/gpsLib.c C:/Users/Luke_LPT/MPLABXProjects/bluetoothTest.X/serial.c C:/Users/Luke_LPT/MPLABXProjects/bluetoothTest.X/BOARD.c
 
 
 CFLAGS=
@@ -124,6 +124,18 @@ ${OBJECTDIR}/_ext/1708633301/gpsLib.o: C:/Users/Luke_LPT/MPLABXProjects/bluetoot
 	@${RM} ${OBJECTDIR}/_ext/1708633301/gpsLib.o 
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1708633301/gpsLib.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1708633301/gpsLib.o.d" -o ${OBJECTDIR}/_ext/1708633301/gpsLib.o C:/Users/Luke_LPT/MPLABXProjects/bluetoothTest.X/gpsLib.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
 	
+${OBJECTDIR}/_ext/1708633301/serial.o: C:/Users/Luke_LPT/MPLABXProjects/bluetoothTest.X/serial.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1708633301" 
+	@${RM} ${OBJECTDIR}/_ext/1708633301/serial.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1708633301/serial.o 
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1708633301/serial.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1708633301/serial.o.d" -o ${OBJECTDIR}/_ext/1708633301/serial.o C:/Users/Luke_LPT/MPLABXProjects/bluetoothTest.X/serial.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
+	
+${OBJECTDIR}/_ext/1708633301/BOARD.o: C:/Users/Luke_LPT/MPLABXProjects/bluetoothTest.X/BOARD.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1708633301" 
+	@${RM} ${OBJECTDIR}/_ext/1708633301/BOARD.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1708633301/BOARD.o 
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1708633301/BOARD.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1708633301/BOARD.o.d" -o ${OBJECTDIR}/_ext/1708633301/BOARD.o C:/Users/Luke_LPT/MPLABXProjects/bluetoothTest.X/BOARD.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
+	
 else
 ${OBJECTDIR}/main.o: main.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
@@ -142,6 +154,18 @@ ${OBJECTDIR}/_ext/1708633301/gpsLib.o: C:/Users/Luke_LPT/MPLABXProjects/bluetoot
 	@${RM} ${OBJECTDIR}/_ext/1708633301/gpsLib.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1708633301/gpsLib.o 
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1708633301/gpsLib.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1708633301/gpsLib.o.d" -o ${OBJECTDIR}/_ext/1708633301/gpsLib.o C:/Users/Luke_LPT/MPLABXProjects/bluetoothTest.X/gpsLib.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
+	
+${OBJECTDIR}/_ext/1708633301/serial.o: C:/Users/Luke_LPT/MPLABXProjects/bluetoothTest.X/serial.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1708633301" 
+	@${RM} ${OBJECTDIR}/_ext/1708633301/serial.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1708633301/serial.o 
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1708633301/serial.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1708633301/serial.o.d" -o ${OBJECTDIR}/_ext/1708633301/serial.o C:/Users/Luke_LPT/MPLABXProjects/bluetoothTest.X/serial.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
+	
+${OBJECTDIR}/_ext/1708633301/BOARD.o: C:/Users/Luke_LPT/MPLABXProjects/bluetoothTest.X/BOARD.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1708633301" 
+	@${RM} ${OBJECTDIR}/_ext/1708633301/BOARD.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1708633301/BOARD.o 
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1708633301/BOARD.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1708633301/BOARD.o.d" -o ${OBJECTDIR}/_ext/1708633301/BOARD.o C:/Users/Luke_LPT/MPLABXProjects/bluetoothTest.X/BOARD.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
 	
 endif
 

@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=main.c serialcomm.c
+SOURCEFILES_QUOTED_IF_SPACED=main.c serialcomm.c C:/Users/Luke_LPT/Desktop/CMPE167/src/BOARD.c C:/Users/Luke_LPT/Desktop/CMPE167/src/serial.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.o ${OBJECTDIR}/serialcomm.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/main.o.d ${OBJECTDIR}/serialcomm.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.o ${OBJECTDIR}/serialcomm.o ${OBJECTDIR}/_ext/1303436813/BOARD.o ${OBJECTDIR}/_ext/1303436813/serial.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/main.o.d ${OBJECTDIR}/serialcomm.o.d ${OBJECTDIR}/_ext/1303436813/BOARD.o.d ${OBJECTDIR}/_ext/1303436813/serial.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/main.o ${OBJECTDIR}/serialcomm.o
+OBJECTFILES=${OBJECTDIR}/main.o ${OBJECTDIR}/serialcomm.o ${OBJECTDIR}/_ext/1303436813/BOARD.o ${OBJECTDIR}/_ext/1303436813/serial.o
 
 # Source Files
-SOURCEFILES=main.c serialcomm.c
+SOURCEFILES=main.c serialcomm.c C:/Users/Luke_LPT/Desktop/CMPE167/src/BOARD.c C:/Users/Luke_LPT/Desktop/CMPE167/src/serial.c
 
 
 CFLAGS=
@@ -110,26 +110,50 @@ ${OBJECTDIR}/main.o: main.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/main.o.d 
 	@${RM} ${OBJECTDIR}/main.o 
-	@${FIXDEPS} "${OBJECTDIR}/main.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/main.o.d" -o ${OBJECTDIR}/main.o main.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
+	@${FIXDEPS} "${OBJECTDIR}/main.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"C:/Users/Luke_LPT/Desktop/CMPE167/include" -MMD -MF "${OBJECTDIR}/main.o.d" -o ${OBJECTDIR}/main.o main.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
 	
 ${OBJECTDIR}/serialcomm.o: serialcomm.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/serialcomm.o.d 
 	@${RM} ${OBJECTDIR}/serialcomm.o 
-	@${FIXDEPS} "${OBJECTDIR}/serialcomm.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/serialcomm.o.d" -o ${OBJECTDIR}/serialcomm.o serialcomm.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
+	@${FIXDEPS} "${OBJECTDIR}/serialcomm.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"C:/Users/Luke_LPT/Desktop/CMPE167/include" -MMD -MF "${OBJECTDIR}/serialcomm.o.d" -o ${OBJECTDIR}/serialcomm.o serialcomm.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
+	
+${OBJECTDIR}/_ext/1303436813/BOARD.o: C:/Users/Luke_LPT/Desktop/CMPE167/src/BOARD.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1303436813" 
+	@${RM} ${OBJECTDIR}/_ext/1303436813/BOARD.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1303436813/BOARD.o 
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1303436813/BOARD.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"C:/Users/Luke_LPT/Desktop/CMPE167/include" -MMD -MF "${OBJECTDIR}/_ext/1303436813/BOARD.o.d" -o ${OBJECTDIR}/_ext/1303436813/BOARD.o C:/Users/Luke_LPT/Desktop/CMPE167/src/BOARD.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
+	
+${OBJECTDIR}/_ext/1303436813/serial.o: C:/Users/Luke_LPT/Desktop/CMPE167/src/serial.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1303436813" 
+	@${RM} ${OBJECTDIR}/_ext/1303436813/serial.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1303436813/serial.o 
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1303436813/serial.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"C:/Users/Luke_LPT/Desktop/CMPE167/include" -MMD -MF "${OBJECTDIR}/_ext/1303436813/serial.o.d" -o ${OBJECTDIR}/_ext/1303436813/serial.o C:/Users/Luke_LPT/Desktop/CMPE167/src/serial.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
 	
 else
 ${OBJECTDIR}/main.o: main.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/main.o.d 
 	@${RM} ${OBJECTDIR}/main.o 
-	@${FIXDEPS} "${OBJECTDIR}/main.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/main.o.d" -o ${OBJECTDIR}/main.o main.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
+	@${FIXDEPS} "${OBJECTDIR}/main.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"C:/Users/Luke_LPT/Desktop/CMPE167/include" -MMD -MF "${OBJECTDIR}/main.o.d" -o ${OBJECTDIR}/main.o main.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
 	
 ${OBJECTDIR}/serialcomm.o: serialcomm.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/serialcomm.o.d 
 	@${RM} ${OBJECTDIR}/serialcomm.o 
-	@${FIXDEPS} "${OBJECTDIR}/serialcomm.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/serialcomm.o.d" -o ${OBJECTDIR}/serialcomm.o serialcomm.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
+	@${FIXDEPS} "${OBJECTDIR}/serialcomm.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"C:/Users/Luke_LPT/Desktop/CMPE167/include" -MMD -MF "${OBJECTDIR}/serialcomm.o.d" -o ${OBJECTDIR}/serialcomm.o serialcomm.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
+	
+${OBJECTDIR}/_ext/1303436813/BOARD.o: C:/Users/Luke_LPT/Desktop/CMPE167/src/BOARD.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1303436813" 
+	@${RM} ${OBJECTDIR}/_ext/1303436813/BOARD.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1303436813/BOARD.o 
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1303436813/BOARD.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"C:/Users/Luke_LPT/Desktop/CMPE167/include" -MMD -MF "${OBJECTDIR}/_ext/1303436813/BOARD.o.d" -o ${OBJECTDIR}/_ext/1303436813/BOARD.o C:/Users/Luke_LPT/Desktop/CMPE167/src/BOARD.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
+	
+${OBJECTDIR}/_ext/1303436813/serial.o: C:/Users/Luke_LPT/Desktop/CMPE167/src/serial.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1303436813" 
+	@${RM} ${OBJECTDIR}/_ext/1303436813/serial.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1303436813/serial.o 
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1303436813/serial.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"C:/Users/Luke_LPT/Desktop/CMPE167/include" -MMD -MF "${OBJECTDIR}/_ext/1303436813/serial.o.d" -o ${OBJECTDIR}/_ext/1303436813/serial.o C:/Users/Luke_LPT/Desktop/CMPE167/src/serial.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
 	
 endif
 

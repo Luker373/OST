@@ -45,13 +45,16 @@
 
 void processSentence(char *str);
 void createGNOST(char *str);
+void createGNTST(char *str);
 int calcCS(char *str);
 int checkCS(char *str);
 void processGGA(char *str);
 void processGSA(char *str);
+void processRMC(char *str);
 float getLong(void);
 float getLat(void);
 float getAlt(void);
+float getSpeed(void);
 int getHour(void);
 int getMinute(void);
 int getSecond(void);

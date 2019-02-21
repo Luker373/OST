@@ -2,123 +2,152 @@
 #include <GenericTypeDefs.h>
 #include <plib.h>
 #include <stdio.h>
+#include <string.h>
+#include <serial.h>
 
-#define	GetSystemClock() 			(80000000ul)
-#define	GetPeripheralClock()		(GetSystemClock()/(1 << OSCCONbits.PBDIV))
-#define	GetInstructionClock()		(GetSystemClock())
+static char str1[200];
+static int idx1=0;
+static char str2[200];
+static int idx2=0;
 
-void initUART1(){
-    
-    UARTConfigure(UART1, UART_ENABLE_PINS_TX_RX_ONLY);
-    UARTSetFifoMode(UART1, UART_INTERRUPT_ON_TX_NOT_FULL | UART_INTERRUPT_ON_RX_NOT_EMPTY);
-    UARTSetLineControl(UART1, UART_DATA_SIZE_8_BITS | UART_PARITY_NONE | UART_STOP_BITS_1);
-    UARTSetDataRate(UART1, GetPeripheralClock(), 9600);
-    UARTEnable(UART1, UART_ENABLE_FLAGS(UART_PERIPHERAL | UART_RX | UART_TX));
-    
-}
 
 // *****************************************************************************
-// void UARTTxBuffer(char *buffer, UINT32 size)
+// void GetDataBuffer(int uart, char *buffer)
 // *****************************************************************************
-void SendDataBufferUART1(const char *buffer, UINT32 size){
-    while(size)
-    {
-        while(!UARTTransmitterIsReady(UART1));
-
-        UARTSendDataByte(UART1, *buffer);
-
-        buffer++;
-        size--;
+void GetDataBuffer(int uart, char *buffer){
+    if (uart == 1){
+        strcpy(buffer, str1);
     }
-
-    while(!UARTTransmissionHasCompleted(UART1))
-        ;
+    if (uart == 2){
+        strcpy(buffer, str2);
+    }
 }
-// *****************************************************************************
-// UINT32 GetDataBuffer(char *buffer, UINT32 max_size)
-// *****************************************************************************
-UINT32 GetDataBufferUART1(char *buffer, UINT32 max_size)
-{
-    UINT32 num_char;
 
+// *****************************************************************************
+// int UpdateDataBuffer(int uart, int max_size)
+// *****************************************************************************
+int UpdateDataBuffer(int uart, int max_size)
+{
+    int num_char;
     num_char = 0;
 
-    while(num_char < max_size)
+    while(!IsReceiveEmpty(uart) && num_char < max_size)
     {
-        UINT8 character;
+        char character;
+        character = GetChar(uart);
 
-        while(!UARTReceivedDataIsAvailable(UART1));
-
-        character = UARTGetDataByte(UART1);
-
-        if(character == '\r' || character == '\n')
-            break;
-
-        *buffer = character;
-
-        buffer++;
-        num_char++;
+        if(character == '\r'){
+            if(uart == 1){
+                str1[idx1] = '\r';
+                idx1++;
+                str1[idx1] = '\n';
+                idx1++;
+                str1[idx1] = '\0';
+                idx1 = 0;
+                num_char+=2;
+                return 1;
+            }
+            if(uart == 2){
+                str2[idx2] = '\r';
+                idx2++;
+                str2[idx2] = '\n';
+                idx2++;
+                str2[idx2] = '\0';
+                idx2 = 0;
+                num_char+=2;
+                return 1;
+            }
+        }
+        if (character == '\n'){
+            if(uart == 1){
+                str1[idx1] = '\r';
+                idx1++;
+                str1[idx1] = '\n';
+                idx1++;
+                str1[idx1] = '\0';
+                idx1 = 0;
+                num_char+=2;
+                return 1;
+            }
+            if(uart == 2){
+                str2[idx2] = '\r';
+                idx2++;
+                str2[idx2] = '\n';
+                idx2++;
+                str2[idx2] = '\0';
+                idx2 = 0;
+                num_char+=2;
+                return 1;
+            }
+        }
+        if(uart == 1){
+            str1[idx1] = character;
+            idx1++;
+            num_char++;
+        }
+        if(uart == 2){
+            str2[idx2] = character;
+            idx2++;
+            num_char++;
+        }
+        
     }
-
-    return num_char;
+    return 0;
 }
 
-void initUART2(){
-    
-    UARTConfigure(UART2, UART_ENABLE_PINS_TX_RX_ONLY);
-    UARTSetFifoMode(UART2, UART_INTERRUPT_ON_TX_NOT_FULL | UART_INTERRUPT_ON_RX_NOT_EMPTY);
-    UARTSetLineControl(UART2, UART_DATA_SIZE_8_BITS | UART_PARITY_NONE | UART_STOP_BITS_1);
-    UARTSetDataRate(UART2, GetPeripheralClock(), 9600);
-    UARTEnable(UART2, UART_ENABLE_FLAGS(UART_PERIPHERAL | UART_RX | UART_TX));
-    
-}
 
-// *****************************************************************************
-// void UARTTxBuffer(char *buffer, UINT32 size)
-// *****************************************************************************
-void SendDataBufferUART2(const char *buffer, UINT32 size){
-    while(size)
-    {
-        while(!UARTTransmitterIsReady(UART2))
-            ;
 
-        UARTSendDataByte(UART2, *buffer);
-
-        buffer++;
-        size--;
-    }
-
-    while(!UARTTransmissionHasCompleted(UART2))
-        ;
-}
-// *****************************************************************************
-// UINT32 GetDataBuffer(char *buffer, UINT32 max_size)
-// *****************************************************************************
-UINT32 GetDataBufferUART2(char *buffer, UINT32 max_size)
-{
-    UINT32 num_char;
-
-    num_char = 0;
-
-    while(num_char < max_size)
-    {
-        UINT8 character;
-
-        while(!UARTReceivedDataIsAvailable(UART2));
-
-        character = UARTGetDataByte(UART2);
-
-        if(character == '\r')
-            break;
-
-        *buffer = character;
-
-        buffer++;
-        num_char++;
-    }
-
-    return num_char;
-}
+//// *****************************************************************************
+//// void UARTTxBuffer(char *buffer, UINT32 size)
+//// *****************************************************************************
+//void SendDataBufferUART2(const char *buffer, UINT32 size){
+//    while(size)
+//    {
+//        while(!UARTTransmitterIsReady(UART2));
+//
+//        UARTSendDataByte(UART2, *buffer);
+//
+//        buffer++;
+//        size--;
+//    }
+//
+//    while(!UARTTransmissionHasCompleted(UART2));
+//}
+//// *****************************************************************************
+//// UINT32 GetDataBuffer(char *buffer, UINT32 max_size)
+//// *****************************************************************************
+//int GetDataBufferUART2(char *buffer, int max_size)
+//{
+//    int num_char;
+//
+//    num_char = 0;
+//
+//    while(num_char < max_size)
+//    {
+//        char character;
+//
+//        if(!UARTReceivedDataIsAvailable(UART2))
+//            continue;
+//
+//        character = UARTGetDataByte(UART2);
+//
+//        if(character == '\r' || character == '\n'){
+//            *buffer = '\r';
+//            buffer++;
+//            *buffer = '\n';
+//            buffer++;
+//            num_char += 2;
+//            break;
+//        }
+//
+//        *buffer = character;
+//
+//        buffer++;
+//        num_char++;
+//    }
+//    *buffer = '\0';
+//    return num_char;
+//}
 
 
 /* *****************************************************************************

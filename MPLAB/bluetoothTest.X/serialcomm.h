@@ -19,20 +19,16 @@
 #define _SERIALCOMM_H
 
 //includes 
-#include <xc.h>
+#include "serialcomm.h"
 #include <GenericTypeDefs.h>
+#include <plib.h>
+#include <stdio.h>
+#include <string.h>
+#include "serial.h"
 // defines
 
-
-
-void initUART1();
-void SendDataBufferUART1(const char *buffer, UINT32 size);
-UINT32 GetDataBufferUART1(char *buffer, UINT32 max_size);
-
-void initUART2();
-void SendDataBufferUART2(const char *buffer, UINT32 size);
-UINT32 GetDataBufferUART2(char *buffer, UINT32 max_size);
-
+int UpdateDataBuffer(int uart, int max_size);
+void GetDataBuffer(int uart, char *buffer);
 
     /* Provide C++ Compatibility */
 #ifdef __cplusplus

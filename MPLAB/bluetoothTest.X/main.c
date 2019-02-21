@@ -9,55 +9,65 @@
 #pragma config CP = OFF, BWP = OFF, PWP = OFF
 
 int main(void){
-    initUART1();
-    initUART2();
-    UINT8 str1[200];
+    BOARD_Init();
+    char str1[200];
     UINT32 rx1_size=0;
     UINT8 str2[1024];
     UINT32 rx2_size;
     
-    UINT8 test[] = "TEST\r\n";
-    
+    char  test[] = {
+        "0123456789\r\n"
+    };
+    char gnost[100];
+    char gntst[100];
+    char gpsPacket[100];
     memset(str2, '\0', sizeof(str2));
     strcpy(str2, test);
     rx1_size = 0;
-    while(1){
-        SendDataBufferUART2(test, strlen(test));
-        
-        
-        
-//        if(UARTReceivedDataIsAvailable(UART1)){
-//            rx1_size = GetDataBufferUART1(str1, 1024);
+    int i=0, j=0;
+    while(1){    
+
+        if(UpdateDataBuffer(1, 100)){
+            GetDataBuffer(1, gpsPacket);
+            processSentence(gpsPacket);
+            createGNOST(gnost);
+            createGNTST(gntst);
+            for(i = 0; i < strlen(gnost); i++){
+                PutChar(2, gnost[i]);
+            }
+//            for(i = 0; i < strlen(gntst); i++){
+//                PutChar(2, gntst[i]);
+//            }
+        }
+//            
+//        if(j == 1234560){
+//            //createGNOST(printmsg);
+//            for(i = 0; i < strlen(gpsPacket); i++){
+//                PutChar(2, gpsPacket[i]);
+//            }
+//            j =0;
 //        }
-        
-//        rx1_size = GetDataBufferUART1(str1, 1024);
-//        if(rx1_size > 0){
-//            SendDataBufferUART2(str1, rx1_size);
-//        }else{
-//            sprintf(str1, "FAILED\n");
-//            SendDataBufferUART1(str1, sizeof(str1));
-//        }
-//        
-//        rx2_size = GetDataBufferUART2(str2, 1024);
-//        if(rx2_size > 0){
-//            SendDataBufferUART1(str1, rx2_size);
-//        }else{
-//            sprintf(str2, "FAILED\n");
-//            SendDataBufferUART2(str2, sizeof(str2));
-//        }
-        
-        
-//        rx1_size = GetDataBufferUART2(rxgps, 1); //read byte from GPS
-//        msg[i%79] = rxgps;
-//        i++;
-//        if (rxgps==0x0A) // Line Feed detected => end of a sentence
+//        j++;
+      //  str1[i%79] = UARTGetDataByte(UART2); //read byte from GPS
+//        char p = UARTGetDataByte(UART2);
+//        str1[i%79] = p;
+//        UARTSendDataByte(UART1, str1[i%79]);
+        //i++;
+//        if (p==0x0A) // Line Feed detected => end of a sentence
 //          {
-//            msg[i] = '\0';
+//            str1[i%79] = '\0';
 //            // Serial.write(msg); 
-//            processSentence(msg);
-//            createGNOST(printmsg);
-//            SendDataBufferUART1(printmsg, sizeof(printmsg));
+////            processSentence(msg);
+////            createGNOST(printmsg);
+//            for(j=0; j <= i; j++){
+//                UARTSendDataByte(UART1, str1[j%79]);
+//            }
+//            //SendDataBufferUART2(str1, strlen(str1));
 //            i = 0;
+//          }
+//        else
+//          {
+//            SendDataBufferUART2(test, strlen(test));
 //          }
     }
     
