@@ -22,7 +22,7 @@ int main(void) {
     INCAP_Init();
     
     char str[100] = "startup";
-    float freq, degree = 0;
+    float freq = 0, degree = 0, windSpeed = 0;
     unsigned int degVal = 0, numSamples = 0;
     int delay = 100;
 
@@ -41,9 +41,10 @@ int main(void) {
         //degVal = degVal/numSamples;
         degree = (((float)((float)degVal/numSamples)) - 1034.486486)/-2.942303732;
         freq = freq/numSamples;
+        windSpeed = (freq + .00185)/0.524;
         
-        sprintf(str, "%0.3f Hz\r\n%d\r\n%0.3f\r\n", freq, degVal, degree);
-        
+        //sprintf(str, "%0.3f Hz\r\n%d\r\n%0.3f\r\n", freq, degVal, degree);
+        sprintf(str, "%0.2f Hz\r\n%0.2f mph\r\n%0.2f degrees\r\n", freq, windSpeed, degree);
         numSamples = 0;
         degVal = 0;
         freq = 0;
