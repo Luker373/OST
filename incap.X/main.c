@@ -18,7 +18,7 @@ int main(void) {
     OledInit();
     INCAP_Init();
     
-    char str[100] = "hi";
+    char str[100] = "startup";
     float freq;
 
     while (1) {

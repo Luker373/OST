@@ -51,17 +51,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=C:/Users/Joe/Desktop/incap.X/main.c src/Ascii.c src/BOARD.c src/INPUT_CAPTURE.c src/Oled.c src/OledDriver.c src/serial.c src/timers.c
+SOURCEFILES_QUOTED_IF_SPACED=src/Ascii.c src/BOARD.c src/INPUT_CAPTURE.c src/Oled.c src/OledDriver.c src/serial.c src/timers.c src/AD.c anemometer.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/702734782/main.o ${OBJECTDIR}/src/Ascii.o ${OBJECTDIR}/src/BOARD.o ${OBJECTDIR}/src/INPUT_CAPTURE.o ${OBJECTDIR}/src/Oled.o ${OBJECTDIR}/src/OledDriver.o ${OBJECTDIR}/src/serial.o ${OBJECTDIR}/src/timers.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/702734782/main.o.d ${OBJECTDIR}/src/Ascii.o.d ${OBJECTDIR}/src/BOARD.o.d ${OBJECTDIR}/src/INPUT_CAPTURE.o.d ${OBJECTDIR}/src/Oled.o.d ${OBJECTDIR}/src/OledDriver.o.d ${OBJECTDIR}/src/serial.o.d ${OBJECTDIR}/src/timers.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/src/Ascii.o ${OBJECTDIR}/src/BOARD.o ${OBJECTDIR}/src/INPUT_CAPTURE.o ${OBJECTDIR}/src/Oled.o ${OBJECTDIR}/src/OledDriver.o ${OBJECTDIR}/src/serial.o ${OBJECTDIR}/src/timers.o ${OBJECTDIR}/src/AD.o ${OBJECTDIR}/anemometer.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/src/Ascii.o.d ${OBJECTDIR}/src/BOARD.o.d ${OBJECTDIR}/src/INPUT_CAPTURE.o.d ${OBJECTDIR}/src/Oled.o.d ${OBJECTDIR}/src/OledDriver.o.d ${OBJECTDIR}/src/serial.o.d ${OBJECTDIR}/src/timers.o.d ${OBJECTDIR}/src/AD.o.d ${OBJECTDIR}/anemometer.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/_ext/702734782/main.o ${OBJECTDIR}/src/Ascii.o ${OBJECTDIR}/src/BOARD.o ${OBJECTDIR}/src/INPUT_CAPTURE.o ${OBJECTDIR}/src/Oled.o ${OBJECTDIR}/src/OledDriver.o ${OBJECTDIR}/src/serial.o ${OBJECTDIR}/src/timers.o
+OBJECTFILES=${OBJECTDIR}/src/Ascii.o ${OBJECTDIR}/src/BOARD.o ${OBJECTDIR}/src/INPUT_CAPTURE.o ${OBJECTDIR}/src/Oled.o ${OBJECTDIR}/src/OledDriver.o ${OBJECTDIR}/src/serial.o ${OBJECTDIR}/src/timers.o ${OBJECTDIR}/src/AD.o ${OBJECTDIR}/anemometer.o
 
 # Source Files
-SOURCEFILES=C:/Users/Joe/Desktop/incap.X/main.c src/Ascii.c src/BOARD.c src/INPUT_CAPTURE.c src/Oled.c src/OledDriver.c src/serial.c src/timers.c
+SOURCEFILES=src/Ascii.c src/BOARD.c src/INPUT_CAPTURE.c src/Oled.c src/OledDriver.c src/serial.c src/timers.c src/AD.c anemometer.c
 
 
 CFLAGS=
@@ -100,12 +100,6 @@ endif
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: compile
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${OBJECTDIR}/_ext/702734782/main.o: C:/Users/Joe/Desktop/incap.X/main.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/702734782" 
-	@${RM} ${OBJECTDIR}/_ext/702734782/main.o.d 
-	@${RM} ${OBJECTDIR}/_ext/702734782/main.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/702734782/main.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"include" -MMD -MF "${OBJECTDIR}/_ext/702734782/main.o.d" -o ${OBJECTDIR}/_ext/702734782/main.o C:/Users/Joe/Desktop/incap.X/main.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD) 
-	
 ${OBJECTDIR}/src/Ascii.o: src/Ascii.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/src" 
 	@${RM} ${OBJECTDIR}/src/Ascii.o.d 
@@ -148,13 +142,19 @@ ${OBJECTDIR}/src/timers.o: src/timers.c  nbproject/Makefile-${CND_CONF}.mk
 	@${RM} ${OBJECTDIR}/src/timers.o 
 	@${FIXDEPS} "${OBJECTDIR}/src/timers.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"include" -MMD -MF "${OBJECTDIR}/src/timers.o.d" -o ${OBJECTDIR}/src/timers.o src/timers.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD) 
 	
-else
-${OBJECTDIR}/_ext/702734782/main.o: C:/Users/Joe/Desktop/incap.X/main.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/_ext/702734782" 
-	@${RM} ${OBJECTDIR}/_ext/702734782/main.o.d 
-	@${RM} ${OBJECTDIR}/_ext/702734782/main.o 
-	@${FIXDEPS} "${OBJECTDIR}/_ext/702734782/main.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"include" -MMD -MF "${OBJECTDIR}/_ext/702734782/main.o.d" -o ${OBJECTDIR}/_ext/702734782/main.o C:/Users/Joe/Desktop/incap.X/main.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD) 
+${OBJECTDIR}/src/AD.o: src/AD.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/src" 
+	@${RM} ${OBJECTDIR}/src/AD.o.d 
+	@${RM} ${OBJECTDIR}/src/AD.o 
+	@${FIXDEPS} "${OBJECTDIR}/src/AD.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"include" -MMD -MF "${OBJECTDIR}/src/AD.o.d" -o ${OBJECTDIR}/src/AD.o src/AD.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD) 
 	
+${OBJECTDIR}/anemometer.o: anemometer.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/anemometer.o.d 
+	@${RM} ${OBJECTDIR}/anemometer.o 
+	@${FIXDEPS} "${OBJECTDIR}/anemometer.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"include" -MMD -MF "${OBJECTDIR}/anemometer.o.d" -o ${OBJECTDIR}/anemometer.o anemometer.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD) 
+	
+else
 ${OBJECTDIR}/src/Ascii.o: src/Ascii.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/src" 
 	@${RM} ${OBJECTDIR}/src/Ascii.o.d 
@@ -196,6 +196,18 @@ ${OBJECTDIR}/src/timers.o: src/timers.c  nbproject/Makefile-${CND_CONF}.mk
 	@${RM} ${OBJECTDIR}/src/timers.o.d 
 	@${RM} ${OBJECTDIR}/src/timers.o 
 	@${FIXDEPS} "${OBJECTDIR}/src/timers.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"include" -MMD -MF "${OBJECTDIR}/src/timers.o.d" -o ${OBJECTDIR}/src/timers.o src/timers.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD) 
+	
+${OBJECTDIR}/src/AD.o: src/AD.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/src" 
+	@${RM} ${OBJECTDIR}/src/AD.o.d 
+	@${RM} ${OBJECTDIR}/src/AD.o 
+	@${FIXDEPS} "${OBJECTDIR}/src/AD.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"include" -MMD -MF "${OBJECTDIR}/src/AD.o.d" -o ${OBJECTDIR}/src/AD.o src/AD.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD) 
+	
+${OBJECTDIR}/anemometer.o: anemometer.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/anemometer.o.d 
+	@${RM} ${OBJECTDIR}/anemometer.o 
+	@${FIXDEPS} "${OBJECTDIR}/anemometer.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"include" -MMD -MF "${OBJECTDIR}/anemometer.o.d" -o ${OBJECTDIR}/anemometer.o anemometer.c    -DXPRJ_default=$(CND_CONF)    $(COMPARISON_BUILD) 
 	
 endif
 
