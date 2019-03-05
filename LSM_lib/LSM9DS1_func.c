@@ -2,6 +2,10 @@
 #include <LSM9DS1.h>
 #include <I2C.h>
 
+#define FALSE 0
+#define TRUE 1
+
+
 /*******************************************************************************
  * PUBLIC FUNCTIONS                                                           *
  ******************************************************************************/
@@ -28,7 +32,7 @@ char LSM9DS1_Init(void){
 
 	// Enable the gyroscope
 	I2C_WriteReg(LSM9DS1_GYR_ADDRESS,LSM9DS1_CTRL_REG4,0b00111000);      // z, y, x axis enabled for gyro
-	I2C_WriteReg(LSM9DS1_GYR_ADDRESS,LSM9DS1_CTRL_REG1_G,0b10111000);    // Gyro ODR = 476Hz, 2000 dps
+	I2C_WriteReg(LSM9DS1_GYR_ADDRESS,LSM9DS1_CTRL_REG1_G,0b10111000);    // Gyro ODR = 476Hz, 2000 dps, 70 mdps/LSB
 	I2C_WriteReg(LSM9DS1_GYR_ADDRESS,LSM9DS1_ORIENT_CFG_G,0b10111000);   // Swap orientation 
 
 	// Enable the accelerometer
@@ -52,8 +56,7 @@ char LSM9DS1_Init(void){
  * @author SailTrim Team*/
 int LSM9DS1_ReadAccelX(void){
 	int accX = 0;
-	accX |= I2C_ReadRegister(LSM9DS1_ACC_ADDRESS, LSM9DS1_OUT_X_L_XL);
-	accX |= (I2C_ReadRegister(LSM9DS1_ACC_ADDRESS, LSM9DS1_OUT_X_H_XL) << 8);
+	accX |= I2C_ReadInt(LSM9DS1_ACC_ADDRESS, LSM9DS1_OUT_Y_L_XL, FALSE);	
 	return accX;
 }
 
@@ -65,8 +68,7 @@ int LSM9DS1_ReadAccelX(void){
  * @author SailTrim Team*/
 int LSM9DS1_ReadAccelY(void){
 	int accY = 0;
-	accY |= I2C_ReadRegister(LSM9DS1_ACC_ADDRESS, LSM9DS1_OUT_Y_L_XL);
-	accY |= (I2C_ReadRegister(LSM9DS1_ACC_ADDRESS, LSM9DS1_OUT_Y_H_XL) << 8);
+	accY |= I2C_ReadInt(LSM9DS1_ACC_ADDRESS, LSM9DS1_OUT_Y_L_XL, FALSE);	
 	return accY;
 }
 
@@ -78,8 +80,7 @@ int LSM9DS1_ReadAccelY(void){
  * @author SailTrim Team*/
 int LSM9DS1_ReadAccelZ(void){
 	int accZ = 0;
-	accZ |= I2C_ReadRegister(LSM9DS1_ACC_ADDRESS, LSM9DS1_OUT_Z_L_XL);
-	accZ |= (I2C_ReadRegister(LSM9DS1_ACC_ADDRESS, LSM9DS1_OUT_Z_H_XL) << 8);
+	accZ |= I2C_ReadInt(LSM9DS1_ACC_ADDRESS, LSM9DS1_OUT_X_L_XL, FALSE);
 	return accZ;
 }
 
@@ -91,9 +92,8 @@ int LSM9DS1_ReadAccelZ(void){
  * @author SailTrim Team*/
 int LSM9DS1_ReadGyroX(void){
 	int gyroX = 0;
-	gyroY |= I2C_ReadRegister(LSM9DS1_GYR_ADDRESS, LSM9DS1_OUT_X_L_G);
-	gyroY |= (I2C_ReadRegister(LSM9DS1_GYR_ADDRESS, LSM9DS1_OUT_X_H_G) << 8);
-	return gyroY;
+	gyroX |= I2C_ReadInt(LSM9DS1_GYR_ADDRESS, LSM9DS1_OUT_X_L_G, FALSE);
+	return gyroX;
 }
 
 /**
@@ -104,8 +104,7 @@ int LSM9DS1_ReadGyroX(void){
  * @author SailTrim Team*/
 int LSM9DS1_ReadGyroY(void){
 	int gyroY = 0;
-	gyroY |= I2C_ReadRegister(LSM9DS1_GYR_ADDRESS, LSM9DS1_OUT_Y_L_G);
-	gyroY |= (I2C_ReadRegister(LSM9DS1_GYR_ADDRESS, LSM9DS1_OUT_Y_H_G) << 8);
+	gyroY |= I2C_ReadInt(LSM9DS1_GYR_ADDRESS, LSM9DS1_OUT_Y_L_G, FALSE);
 	return gyroY;
 }
 
@@ -117,8 +116,7 @@ int LSM9DS1_ReadGyroY(void){
  * @author SailTrim Team*/
 int LSM9DS1_ReadGyroZ(void){
 	int gyroZ = 0;
-	gyroZ |= I2C_ReadRegister(LSM9DS1_GYR_ADDRESS, LSM9DS1_OUT_Z_L_G);
-	gyroZ |= (I2C_ReadRegister(LSM9DS1_GYR_ADDRESS, LSM9DS1_OUT_Z_H_G) << 8);
+	gyroZ |= I2C_ReadInt(LSM9DS1_GYR_ADDRESS, LSM9DS1_OUT_Z_L_G, FALSE);
 	return gyroZ;
 }
 
@@ -130,8 +128,7 @@ int LSM9DS1_ReadGyroZ(void){
  * @author SailTrim Team*/
 int LSM9DS1_ReadMagX(void){
 	int magX = 0;
-	magX |= I2C_ReadRegister(LSM9DS1_MAG_ADDRESS, LSM9DS1_OUT_X_L_M);
-	magX |= (I2C_ReadRegister(LSM9DS1_MAG_ADDRESS, LSM9DS1_OUT_X_H_M) << 8);
+	magX |= I2C_ReadInt(LSM9DS1_ACC_ADDRESS, LSM9DS1_OUT_X_L_M, FALSE);
 	return magX;
 }
 
@@ -143,8 +140,7 @@ int LSM9DS1_ReadMagX(void){
  * @author SailTrim Team*/
 int LSM9DS1_ReadMagY(void){
 	int magY = 0;
-	magY |= I2C_ReadRegister(LSM9DS1_MAG_ADDRESS, LSM9DS1_OUT_Y_L_M);
-	magY |= (I2C_ReadRegister(LSM9DS1_MAG_ADDRESS, LSM9DS1_OUT_Y_H_M) << 8);
+	magY |= I2C_ReadInt(LSM9DS1_MAG_ADDRESS, LSM9DS1_OUT_Y_L_M, FALSE);
 	return magY;
 }
 
@@ -156,7 +152,6 @@ int LSM9DS1_ReadMagY(void){
  * @author SailTrim Team*/
 int LSM9DS1_ReadMagZ(void){
 	int magZ = 0;
-	magZ |= I2C_ReadRegister(LSM9DS1_MAG_ADDRESS, LSM9DS1_OUT_Z_L_M);
-	magZ |= (I2C_ReadRegister(LSM9DS1_MAG_ADDRESS, LSM9DS1_OUT_Z_H_M) << 8);
+	magZ |= I2C_ReadInt(LSM9DS1_MAG_ADDRESS, LSM9DS1_OUT_Z_L_M, FALSE);
 	return magZ;
 }
