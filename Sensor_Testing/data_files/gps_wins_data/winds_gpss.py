@@ -141,8 +141,12 @@ for i in range(1,len(sys.argv)):
 				bestScale = scaleFactor
 				bestMaxErr = maxErr
 
+		if z == 10:
+			print("--Orig Avg Err:", totErr / totCt)
+			print("--Orig Max Err:", maxErr)
+
 	print("--Best ScaleFactor:", bestScale)
 	print("--Avg Err w/ best ScaleFactor:", bestAvg)
-	print("--MaxErr w/ best ScaleFactor:", bestMaxErr)
+	print("--Max Err w/ best ScaleFactor:", bestMaxErr)
 
 	f.close()
