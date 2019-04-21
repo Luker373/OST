@@ -6,4 +6,6 @@ include/serial.h  \
  include/gpsLib.h  \
 include/AD.h  \
 include/INPUT_CAPTURE.h  \
-include/BOARD.h 
+include/BOARD.h  \
+ include/data_processing.h  \
+include/gpsLib.h 

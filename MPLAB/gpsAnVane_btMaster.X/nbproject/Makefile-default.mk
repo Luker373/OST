@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=C:/Users/Luke_LPT/MPLABXProjects/gpsAnVane_btMaster.X/main.c C:/Users/Luke_LPT/MPLABXProjects/gpsAnVane_btMaster.X/src/AD.c C:/Users/Luke_LPT/MPLABXProjects/gpsAnVane_btMaster.X/src/BOARD.c C:/Users/Luke_LPT/MPLABXProjects/gpsAnVane_btMaster.X/src/INPUT_CAPTURE.c C:/Users/Luke_LPT/MPLABXProjects/gpsAnVane_btMaster.X/src/gpsLib.c C:/Users/Luke_LPT/MPLABXProjects/gpsAnVane_btMaster.X/src/serial.c C:/Users/Luke_LPT/MPLABXProjects/gpsAnVane_btMaster.X/src/serialcomm.c C:/Users/Luke_LPT/MPLABXProjects/gpsAnVane_btMaster.X/src/timers.c
+SOURCEFILES_QUOTED_IF_SPACED=C:/Users/Luke_LPT/MPLABXProjects/gpsAnVane_btMaster.X/main.c C:/Users/Luke_LPT/MPLABXProjects/gpsAnVane_btMaster.X/src/AD.c C:/Users/Luke_LPT/MPLABXProjects/gpsAnVane_btMaster.X/src/BOARD.c C:/Users/Luke_LPT/MPLABXProjects/gpsAnVane_btMaster.X/src/INPUT_CAPTURE.c C:/Users/Luke_LPT/MPLABXProjects/gpsAnVane_btMaster.X/src/gpsLib.c C:/Users/Luke_LPT/MPLABXProjects/gpsAnVane_btMaster.X/src/serial.c C:/Users/Luke_LPT/MPLABXProjects/gpsAnVane_btMaster.X/src/serialcomm.c C:/Users/Luke_LPT/MPLABXProjects/gpsAnVane_btMaster.X/src/timers.c C:/Users/Luke_LPT/MPLABXProjects/gpsAnVane_btMaster.X/include/data_processing.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/915395907/main.o ${OBJECTDIR}/_ext/342136600/AD.o ${OBJECTDIR}/_ext/342136600/BOARD.o ${OBJECTDIR}/_ext/342136600/INPUT_CAPTURE.o ${OBJECTDIR}/_ext/342136600/gpsLib.o ${OBJECTDIR}/_ext/342136600/serial.o ${OBJECTDIR}/_ext/342136600/serialcomm.o ${OBJECTDIR}/_ext/342136600/timers.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/915395907/main.o.d ${OBJECTDIR}/_ext/342136600/AD.o.d ${OBJECTDIR}/_ext/342136600/BOARD.o.d ${OBJECTDIR}/_ext/342136600/INPUT_CAPTURE.o.d ${OBJECTDIR}/_ext/342136600/gpsLib.o.d ${OBJECTDIR}/_ext/342136600/serial.o.d ${OBJECTDIR}/_ext/342136600/serialcomm.o.d ${OBJECTDIR}/_ext/342136600/timers.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/915395907/main.o ${OBJECTDIR}/_ext/342136600/AD.o ${OBJECTDIR}/_ext/342136600/BOARD.o ${OBJECTDIR}/_ext/342136600/INPUT_CAPTURE.o ${OBJECTDIR}/_ext/342136600/gpsLib.o ${OBJECTDIR}/_ext/342136600/serial.o ${OBJECTDIR}/_ext/342136600/serialcomm.o ${OBJECTDIR}/_ext/342136600/timers.o ${OBJECTDIR}/_ext/2079618012/data_processing.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/915395907/main.o.d ${OBJECTDIR}/_ext/342136600/AD.o.d ${OBJECTDIR}/_ext/342136600/BOARD.o.d ${OBJECTDIR}/_ext/342136600/INPUT_CAPTURE.o.d ${OBJECTDIR}/_ext/342136600/gpsLib.o.d ${OBJECTDIR}/_ext/342136600/serial.o.d ${OBJECTDIR}/_ext/342136600/serialcomm.o.d ${OBJECTDIR}/_ext/342136600/timers.o.d ${OBJECTDIR}/_ext/2079618012/data_processing.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/_ext/915395907/main.o ${OBJECTDIR}/_ext/342136600/AD.o ${OBJECTDIR}/_ext/342136600/BOARD.o ${OBJECTDIR}/_ext/342136600/INPUT_CAPTURE.o ${OBJECTDIR}/_ext/342136600/gpsLib.o ${OBJECTDIR}/_ext/342136600/serial.o ${OBJECTDIR}/_ext/342136600/serialcomm.o ${OBJECTDIR}/_ext/342136600/timers.o
+OBJECTFILES=${OBJECTDIR}/_ext/915395907/main.o ${OBJECTDIR}/_ext/342136600/AD.o ${OBJECTDIR}/_ext/342136600/BOARD.o ${OBJECTDIR}/_ext/342136600/INPUT_CAPTURE.o ${OBJECTDIR}/_ext/342136600/gpsLib.o ${OBJECTDIR}/_ext/342136600/serial.o ${OBJECTDIR}/_ext/342136600/serialcomm.o ${OBJECTDIR}/_ext/342136600/timers.o ${OBJECTDIR}/_ext/2079618012/data_processing.o
 
 # Source Files
-SOURCEFILES=C:/Users/Luke_LPT/MPLABXProjects/gpsAnVane_btMaster.X/main.c C:/Users/Luke_LPT/MPLABXProjects/gpsAnVane_btMaster.X/src/AD.c C:/Users/Luke_LPT/MPLABXProjects/gpsAnVane_btMaster.X/src/BOARD.c C:/Users/Luke_LPT/MPLABXProjects/gpsAnVane_btMaster.X/src/INPUT_CAPTURE.c C:/Users/Luke_LPT/MPLABXProjects/gpsAnVane_btMaster.X/src/gpsLib.c C:/Users/Luke_LPT/MPLABXProjects/gpsAnVane_btMaster.X/src/serial.c C:/Users/Luke_LPT/MPLABXProjects/gpsAnVane_btMaster.X/src/serialcomm.c C:/Users/Luke_LPT/MPLABXProjects/gpsAnVane_btMaster.X/src/timers.c
+SOURCEFILES=C:/Users/Luke_LPT/MPLABXProjects/gpsAnVane_btMaster.X/main.c C:/Users/Luke_LPT/MPLABXProjects/gpsAnVane_btMaster.X/src/AD.c C:/Users/Luke_LPT/MPLABXProjects/gpsAnVane_btMaster.X/src/BOARD.c C:/Users/Luke_LPT/MPLABXProjects/gpsAnVane_btMaster.X/src/INPUT_CAPTURE.c C:/Users/Luke_LPT/MPLABXProjects/gpsAnVane_btMaster.X/src/gpsLib.c C:/Users/Luke_LPT/MPLABXProjects/gpsAnVane_btMaster.X/src/serial.c C:/Users/Luke_LPT/MPLABXProjects/gpsAnVane_btMaster.X/src/serialcomm.c C:/Users/Luke_LPT/MPLABXProjects/gpsAnVane_btMaster.X/src/timers.c C:/Users/Luke_LPT/MPLABXProjects/gpsAnVane_btMaster.X/include/data_processing.c
 
 
 CFLAGS=
@@ -154,6 +154,12 @@ ${OBJECTDIR}/_ext/342136600/timers.o: C:/Users/Luke_LPT/MPLABXProjects/gpsAnVane
 	@${RM} ${OBJECTDIR}/_ext/342136600/timers.o 
 	@${FIXDEPS} "${OBJECTDIR}/_ext/342136600/timers.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"include" -MMD -MF "${OBJECTDIR}/_ext/342136600/timers.o.d" -o ${OBJECTDIR}/_ext/342136600/timers.o C:/Users/Luke_LPT/MPLABXProjects/gpsAnVane_btMaster.X/src/timers.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
 	
+${OBJECTDIR}/_ext/2079618012/data_processing.o: C:/Users/Luke_LPT/MPLABXProjects/gpsAnVane_btMaster.X/include/data_processing.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/2079618012" 
+	@${RM} ${OBJECTDIR}/_ext/2079618012/data_processing.o.d 
+	@${RM} ${OBJECTDIR}/_ext/2079618012/data_processing.o 
+	@${FIXDEPS} "${OBJECTDIR}/_ext/2079618012/data_processing.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"include" -MMD -MF "${OBJECTDIR}/_ext/2079618012/data_processing.o.d" -o ${OBJECTDIR}/_ext/2079618012/data_processing.o C:/Users/Luke_LPT/MPLABXProjects/gpsAnVane_btMaster.X/include/data_processing.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
+	
 else
 ${OBJECTDIR}/_ext/915395907/main.o: C:/Users/Luke_LPT/MPLABXProjects/gpsAnVane_btMaster.X/main.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/915395907" 
@@ -202,6 +208,12 @@ ${OBJECTDIR}/_ext/342136600/timers.o: C:/Users/Luke_LPT/MPLABXProjects/gpsAnVane
 	@${RM} ${OBJECTDIR}/_ext/342136600/timers.o.d 
 	@${RM} ${OBJECTDIR}/_ext/342136600/timers.o 
 	@${FIXDEPS} "${OBJECTDIR}/_ext/342136600/timers.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"include" -MMD -MF "${OBJECTDIR}/_ext/342136600/timers.o.d" -o ${OBJECTDIR}/_ext/342136600/timers.o C:/Users/Luke_LPT/MPLABXProjects/gpsAnVane_btMaster.X/src/timers.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
+	
+${OBJECTDIR}/_ext/2079618012/data_processing.o: C:/Users/Luke_LPT/MPLABXProjects/gpsAnVane_btMaster.X/include/data_processing.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/2079618012" 
+	@${RM} ${OBJECTDIR}/_ext/2079618012/data_processing.o.d 
+	@${RM} ${OBJECTDIR}/_ext/2079618012/data_processing.o 
+	@${FIXDEPS} "${OBJECTDIR}/_ext/2079618012/data_processing.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"include" -MMD -MF "${OBJECTDIR}/_ext/2079618012/data_processing.o.d" -o ${OBJECTDIR}/_ext/2079618012/data_processing.o C:/Users/Luke_LPT/MPLABXProjects/gpsAnVane_btMaster.X/include/data_processing.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
 	
 endif
 

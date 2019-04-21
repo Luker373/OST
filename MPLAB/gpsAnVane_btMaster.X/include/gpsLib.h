@@ -54,6 +54,8 @@ void processGSA(char *str);
 void processRMC(char *str);
 void setWindSpeed(float f);
 void setWindDegree(float f);
+void setBoomAngle(int i);
+int getBoomAngle(void);
 float getWindSpeed(void);
 float getWindDegree(void);
 float getLong(void);
@@ -63,6 +65,7 @@ float getSpeed(void);
 int getHour(void);
 int getMinute(void);
 int getSecond(void);
+float getTrack(void);
 
 
     /* Provide C++ Compatibility */
