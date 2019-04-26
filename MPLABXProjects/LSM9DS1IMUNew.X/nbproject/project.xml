@@ -3,8 +3,8 @@
     <type>com.microchip.mplab.nbide.embedded.makeproject</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
-            <name>gpsAnVane_btMaster</name>
-            <creation-uuid>26371409-1fe2-43c4-9466-02b1ad0fee44</creation-uuid>
+            <name>LSM9DS1IMUNew</name>
+            <creation-uuid>71241982-e4d5-4afd-94d9-d5df79f28d71</creation-uuid>
             <make-project-type>0</make-project-type>
             <c-extensions>c</c-extensions>
             <cpp-extensions/>
@@ -13,10 +13,8 @@
             <sourceEncoding>ISO-8859-1</sourceEncoding>
             <make-dep-projects/>
             <sourceRootList>
-                <sourceRootElem>C:\Users\Luke_LPT\MPLABXProjects\gpsAnVane_btMaster.X\include</sourceRootElem>
-                <sourceRootElem>C:\Users\Luke_LPT\MPLABXProjects\gpsAnVane_btMaster.X\src</sourceRootElem>
-                <sourceRootElem>C:\Users\RARogers\Documents\CE129</sourceRootElem>
-                <sourceRootElem>C:\Users\RARogers\sail-trim\MPLAB\gpsAnVane_btMaster.X</sourceRootElem>
+                <sourceRootElem>C:\CMPE167</sourceRootElem>
+                <sourceRootElem>C:\Users\RARogers\Downloads</sourceRootElem>
             </sourceRootList>
             <confList>
                 <confElem>

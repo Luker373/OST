@@ -4,44 +4,52 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
-      <itemPath>C:/Users/RARogers/sail-trim/MPLAB/gpsAnVane_btMaster.X/include/AD.h</itemPath>
-      <itemPath>C:/Users/RARogers/sail-trim/MPLAB/gpsAnVane_btMaster.X/include/BOARD.h</itemPath>
-      <itemPath>C:/Users/RARogers/sail-trim/MPLAB/gpsAnVane_btMaster.X/include/I2C.h</itemPath>
-      <itemPath>C:/Users/RARogers/sail-trim/MPLAB/gpsAnVane_btMaster.X/include/INPUT_CAPTURE.h</itemPath>
-      <itemPath>C:/Users/RARogers/sail-trim/MPLAB/gpsAnVane_btMaster.X/include/LSM9DS1.h</itemPath>
-      <itemPath>C:/Users/RARogers/sail-trim/MPLAB/gpsAnVane_btMaster.X/include/gpsLib.h</itemPath>
-      <itemPath>C:/Users/RARogers/sail-trim/MPLAB/gpsAnVane_btMaster.X/include/serial.h</itemPath>
-      <itemPath>C:/Users/RARogers/sail-trim/MPLAB/gpsAnVane_btMaster.X/include/serialcomm.h</itemPath>
-      <itemPath>C:/Users/RARogers/sail-trim/MPLAB/gpsAnVane_btMaster.X/include/timers.h</itemPath>
-      <itemPath>C:/Users/RARogers/sail-trim/MPLAB/gpsAnVane_btMaster.X/include/ClosedLoopIntegration.h</itemPath>
-      <itemPath>C:/Users/RARogers/sail-trim/MPLAB/gpsAnVane_btMaster.X/include/DCM.h</itemPath>
-      <itemPath>C:/Users/RARogers/sail-trim/MPLAB/gpsAnVane_btMaster.X/include/LSM9DS1_func.h</itemPath>
-      <itemPath>C:/Users/RARogers/sail-trim/MPLAB/gpsAnVane_btMaster.X/include/MatrixFunctions.h</itemPath>
-      <itemPath>C:/Users/RARogers/sail-trim/MPLAB/gpsAnVane_btMaster.X/include/OpenLoopIntegration.h</itemPath>
+      <itemPath>C:/Users/RARogers/sail-trim/MPLABXProjects/gpsAnVIMU_bTMaster.X/include/AD.h</itemPath>
+      <itemPath>C:/Users/RARogers/sail-trim/MPLABXProjects/gpsAnVIMU_bTMaster.X/include/BOARD.h</itemPath>
+      <itemPath>C:/Users/RARogers/sail-trim/MPLABXProjects/gpsAnVIMU_bTMaster.X/include/ClosedLoopIntegration.h</itemPath>
+      <itemPath>C:/Users/RARogers/sail-trim/MPLABXProjects/gpsAnVIMU_bTMaster.X/include/DCM.h</itemPath>
+      <itemPath>C:/Users/RARogers/sail-trim/MPLABXProjects/gpsAnVIMU_bTMaster.X/include/I2C.h</itemPath>
+      <itemPath>C:/Users/RARogers/sail-trim/MPLABXProjects/gpsAnVIMU_bTMaster.X/include/INPUT_CAPTURE.h</itemPath>
+      <itemPath>C:/Users/RARogers/sail-trim/MPLABXProjects/gpsAnVIMU_bTMaster.X/include/LSM9DS1.h</itemPath>
+      <itemPath>C:/Users/RARogers/sail-trim/MPLABXProjects/gpsAnVIMU_bTMaster.X/include/LSM9DS1_func.h</itemPath>
+      <itemPath>C:/Users/RARogers/sail-trim/MPLABXProjects/gpsAnVIMU_bTMaster.X/include/MatrixFunctions.h</itemPath>
+      <itemPath>C:/Users/RARogers/sail-trim/MPLABXProjects/gpsAnVIMU_bTMaster.X/include/OpenLoopIntegration.h</itemPath>
+      <itemPath>C:/Users/RARogers/sail-trim/MPLABXProjects/gpsAnVIMU_bTMaster.X/include/gpsLib.h</itemPath>
+      <itemPath>C:/Users/RARogers/sail-trim/MPLABXProjects/gpsAnVIMU_bTMaster.X/include/serialcomm.h</itemPath>
+      <itemPath>C:/Users/RARogers/sail-trim/MPLABXProjects/gpsAnVIMU_bTMaster.X/include/timers.h</itemPath>
+      <itemPath>C:/Users/RARogers/sail-trim/MPLAB/bluetoothTest.X/serial.h</itemPath>
+      <itemPath>C:/CMPE167/include/Oled.h</itemPath>
+      <itemPath>C:/CMPE167/include/OledDriver.h</itemPath>
+      <itemPath>C:/CMPE167/include/Ascii.h</itemPath>
+      <itemPath>C:/CMPE167/include/serial.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
                    projectFiles="true">
+      <itemPath>C:/CMPE167/bootloader320.ld</itemPath>
     </logicalFolder>
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>C:/Users/RARogers/sail-trim/MPLAB/gpsAnVane_btMaster.X/src/AD.c</itemPath>
-      <itemPath>C:/Users/RARogers/sail-trim/MPLAB/gpsAnVane_btMaster.X/src/BOARD.c</itemPath>
-      <itemPath>C:/Users/RARogers/sail-trim/MPLAB/gpsAnVane_btMaster.X/src/I2C.c</itemPath>
-      <itemPath>C:/Users/RARogers/sail-trim/MPLAB/gpsAnVane_btMaster.X/src/INPUT_CAPTURE.c</itemPath>
-      <itemPath>C:/Users/RARogers/sail-trim/MPLAB/gpsAnVane_btMaster.X/src/anemometer.c</itemPath>
-      <itemPath>C:/Users/RARogers/sail-trim/MPLAB/gpsAnVane_btMaster.X/src/gpsLib.c</itemPath>
-      <itemPath>C:/Users/RARogers/sail-trim/MPLAB/gpsAnVane_btMaster.X/src/serial.c</itemPath>
-      <itemPath>C:/Users/RARogers/sail-trim/MPLAB/gpsAnVane_btMaster.X/src/serialcomm.c</itemPath>
-      <itemPath>C:/Users/RARogers/sail-trim/MPLAB/gpsAnVane_btMaster.X/src/timers.c</itemPath>
-      <itemPath>C:/Users/RARogers/sail-trim/MPLAB/gpsAnVane_btMaster.X/src/DS1AttitudeEst.c</itemPath>
-      <itemPath>C:/Users/RARogers/sail-trim/MPLAB/gpsAnVane_btMaster.X/main.c</itemPath>
-      <itemPath>C:/Users/RARogers/sail-trim/MPLAB/gpsAnVane_btMaster.X/src/ClosedLoopIntegration.c</itemPath>
-      <itemPath>C:/Users/RARogers/sail-trim/MPLAB/gpsAnVane_btMaster.X/src/DCM.c</itemPath>
-      <itemPath>C:/Users/RARogers/sail-trim/MPLAB/gpsAnVane_btMaster.X/src/LSM9DS1_func.c</itemPath>
-      <itemPath>C:/Users/RARogers/sail-trim/MPLAB/gpsAnVane_btMaster.X/src/MatrixFunctions.c</itemPath>
-      <itemPath>C:/Users/RARogers/sail-trim/MPLAB/gpsAnVane_btMaster.X/src/OpenLoopIntegration.c</itemPath>
+      <itemPath>C:/Users/RARogers/sail-trim/MPLABXProjects/gpsAnVIMU_bTMaster.X/src/AD.c</itemPath>
+      <itemPath>C:/Users/RARogers/sail-trim/MPLABXProjects/gpsAnVIMU_bTMaster.X/src/BOARD.c</itemPath>
+      <itemPath>C:/Users/RARogers/sail-trim/MPLABXProjects/gpsAnVIMU_bTMaster.X/src/ClosedLoopIntegration.c</itemPath>
+      <itemPath>C:/Users/RARogers/sail-trim/MPLABXProjects/gpsAnVIMU_bTMaster.X/src/DCM.c</itemPath>
+      <itemPath>C:/Users/RARogers/sail-trim/MPLABXProjects/gpsAnVIMU_bTMaster.X/src/DS1AttitudeEst.c</itemPath>
+      <itemPath>C:/Users/RARogers/sail-trim/MPLABXProjects/gpsAnVIMU_bTMaster.X/src/I2C.c</itemPath>
+      <itemPath>C:/Users/RARogers/sail-trim/MPLABXProjects/gpsAnVIMU_bTMaster.X/src/INPUT_CAPTURE.c</itemPath>
+      <itemPath>C:/Users/RARogers/sail-trim/MPLABXProjects/gpsAnVIMU_bTMaster.X/src/LSM9DS1_func.c</itemPath>
+      <itemPath>C:/Users/RARogers/sail-trim/MPLABXProjects/gpsAnVIMU_bTMaster.X/src/MatrixFunctions.c</itemPath>
+      <itemPath>C:/Users/RARogers/sail-trim/MPLABXProjects/gpsAnVIMU_bTMaster.X/src/OpenLoopIntegration.c</itemPath>
+      <itemPath>C:/Users/RARogers/sail-trim/MPLABXProjects/gpsAnVIMU_bTMaster.X/src/gpsLib.c</itemPath>
+      <itemPath>C:/Users/RARogers/sail-trim/MPLABXProjects/gpsAnVIMU_bTMaster.X/src/serialcomm.c</itemPath>
+      <itemPath>C:/Users/RARogers/sail-trim/MPLABXProjects/gpsAnVIMU_bTMaster.X/src/timers.c</itemPath>
+      <itemPath>C:/Users/RARogers/sail-trim/MPLABXProjects/gpsAnVIMU_bTMaster.X/main.c</itemPath>
+      <itemPath>C:/Users/RARogers/sail-trim/MPLAB/bluetoothTest.X/serial.c</itemPath>
+      <itemPath>C:/CMPE167/src/Ascii.c</itemPath>
+      <itemPath>C:/CMPE167/src/serial.c</itemPath>
+      <itemPath>C:/Users/RARogers/MPLABXProjects/gpsAnVane_btMaster.X/src/Oled.c</itemPath>
+      <itemPath>C:/Users/RARogers/MPLABXProjects/gpsAnVane_btMaster.X/src/OledDriver.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -50,17 +58,19 @@
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>
-    <Elem>C:\Users\Luke_LPT\MPLABXProjects\gpsAnVane_btMaster.X\include</Elem>
-    <Elem>C:\Users\Luke_LPT\MPLABXProjects\gpsAnVane_btMaster.X\src</Elem>
-    <Elem>C:\Users\RARogers\Documents\CE129</Elem>
-    <Elem>C:\Users\RARogers\sail-trim\MPLAB\gpsAnVane_btMaster.X</Elem>
+    <Elem>C:\CMPE167</Elem>
+    <Elem>C:\Users\RARogers\sail-trim\MPLABXProjects\gpsAnVIMU_bTMaster.X</Elem>
+    <Elem>C:\Users\RARogers\sail-trim\MPLAB\gpsAnVane_btMaster.X\include</Elem>
+    <Elem>C:\Users\RARogers\sail-trim\MPLAB\gpsAnVane_btMaster.X\src</Elem>
+    <Elem>C:\Users\RARogers\sail-trim\MPLAB\bluetoothTest.X</Elem>
+    <Elem>C:\Users\RARogers\MPLABXProjects\gpsAnVane_btMaster.X\src</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
     <conf name="default" type="2">
       <toolsSet>
         <developmentServer>localhost</developmentServer>
-        <targetDevice>PIC32MX340F512H</targetDevice>
+        <targetDevice>PIC32MX320F128H</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
         <platformTool>PICkit3PlatformTool</platformTool>
@@ -104,7 +114,7 @@
         <property key="enable-unroll-loops" value="false"/>
         <property key="exclude-floating-point" value="false"/>
         <property key="extra-include-directories"
-                  value="include;C:\Users\RARogers\sail-trim\MPLAB\gpsAnVane_btMaster.X\include"/>
+                  value="C:\Users\RARogers\sail-trim\MPLAB\gpsAnVane_btMaster.X;C:\CMPE167\include;C:\Users\RARogers\sail-trim\MPLABXProjects\gpsAnVIMU_bTMaster.X\include;C:\Users\RARogers\sail-trim\MPLAB\bluetoothTest.X"/>
         <property key="generate-16-bit-code" value="false"/>
         <property key="generate-micro-compressed-code" value="false"/>
         <property key="isolate-each-function" value="false"/>
@@ -165,7 +175,7 @@
         <property key="generate-16-bit-code" value="false"/>
         <property key="generate-cross-reference-file" value="false"/>
         <property key="generate-micro-compressed-code" value="false"/>
-        <property key="heap-size" value=""/>
+        <property key="heap-size" value="200"/>
         <property key="input-libraries" value=""/>
         <property key="kseg-length" value=""/>
         <property key="kseg-origin" value=""/>
@@ -225,12 +235,69 @@
         <property key="save-temps" value="false"/>
         <property key="wpo-lto" value="false"/>
       </C32Global>
+      <item path="C:/CMPE167/bootloader320.ld" ex="true" overriding="false">
+        <C32>
+        </C32>
+        <C32-AR>
+        </C32-AR>
+        <C32-AS>
+        </C32-AS>
+        <C32-LD>
+        </C32-LD>
+        <C32CPP>
+        </C32CPP>
+        <C32Global>
+        </C32Global>
+      </item>
+      <item path="C:/CMPE167/include/serial.h" ex="true" overriding="false">
+        <C32>
+        </C32>
+        <C32-AR>
+        </C32-AR>
+        <C32-AS>
+        </C32-AS>
+        <C32-LD>
+        </C32-LD>
+        <C32CPP>
+        </C32CPP>
+        <C32Global>
+        </C32Global>
+      </item>
+      <item path="C:/CMPE167/src/serial.c" ex="true" overriding="false">
+        <C32>
+        </C32>
+        <C32-AR>
+        </C32-AR>
+        <C32-AS>
+        </C32-AS>
+        <C32-LD>
+        </C32-LD>
+        <C32CPP>
+        </C32CPP>
+        <C32Global>
+        </C32Global>
+      </item>
+      <item path="C:/Users/RARogers/sail-trim/MPLABXProjects/gpsAnVIMU_bTMaster.X/src/DS1AttitudeEst.c"
+            ex="true"
+            overriding="false">
+        <C32>
+        </C32>
+        <C32-AR>
+        </C32-AR>
+        <C32-AS>
+        </C32-AS>
+        <C32-LD>
+        </C32-LD>
+        <C32CPP>
+        </C32CPP>
+        <C32Global>
+        </C32Global>
+      </item>
       <PICkit3PlatformTool>
         <property key="ADC 1" value="true"/>
         <property key="AutoSelectMemRanges" value="auto"/>
         <property key="CHANGE NOTICE" value="true"/>
         <property key="COMPARATOR" value="true"/>
-        <property key="DMA" value="true"/>
         <property key="Freeze All Other Peripherals" value="true"/>
         <property key="I2C1" value="true"/>
         <property key="I2C2" value="true"/>
@@ -274,7 +341,7 @@
         <property key="memories.instruction.ram.ranges"
                   value="${memories.instruction.ram.ranges}"/>
         <property key="memories.programmemory" value="true"/>
-        <property key="memories.programmemory.ranges" value="1d000000-1d07ffff"/>
+        <property key="memories.programmemory.ranges" value="1d000000-1d01ffff"/>
         <property key="poweroptions.powerenable" value="false"/>
         <property key="programmertogo.imagename" value=""/>
         <property key="programoptions.donoteraseauxmem" value="false"/>

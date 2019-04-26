@@ -1,0 +1,24 @@
+build/default/production/_ext/897091312/main.o:  \
+ C:/Users/RARogers/sail-trim/MPLABXProjects/gpsAnVIMU_bTMaster.X/main.c  \
+ C:/Users/RARogers/sail-trim/MPLABXProjects/gpsAnVIMU_bTMaster.X/include/serialcomm.h  \
+ C:/Users/RARogers/sail-trim/MPLABXProjects/gpsAnVIMU_bTMaster.X/include/serialcomm.h  \
+ C:/Users/RARogers/sail-trim/MPLABXProjects/gpsAnVIMU_bTMaster.X/include/serial.h  \
+ C:/Users/RARogers/sail-trim/MPLABXProjects/gpsAnVIMU_bTMaster.X/include/gpsLib.h  \
+ C:/CMPE167/include/AD.h  \
+C:/CMPE167/include/BOARD.h  \
+ C:/CMPE167/include/Oled.h  \
+C:/CMPE167/include/Ascii.h  \
+ C:/CMPE167/include/OledDriver.h  \
+C:/CMPE167/include/BOARD.h  \
+ C:/CMPE167/include/OledDriver.h  \
+ C:/Users/RARogers/sail-trim/MPLABXProjects/gpsAnVIMU_bTMaster.X/include/INPUT_CAPTURE.h  \
+ C:/Users/RARogers/sail-trim/MPLABXProjects/gpsAnVIMU_bTMaster.X/include/BOARD.h  \
+ C:/CMPE167/include/I2C.h  \
+C:/CMPE167/include/LSM9DS1_func.h  \
+ C:/CMPE167/include/LSM9DS1.h  \
+ C:/Users/RARogers/sail-trim/MPLABXProjects/gpsAnVIMU_bTMaster.X/include/DCM.h  \
+ C:/Users/RARogers/sail-trim/MPLABXProjects/gpsAnVIMU_bTMaster.X/include/MatrixFunctions.h  \
+ C:/Users/RARogers/sail-trim/MPLABXProjects/gpsAnVIMU_bTMaster.X/include/MatrixFunctions.h  \
+ C:/Users/RARogers/sail-trim/MPLABXProjects/gpsAnVIMU_bTMaster.X/include/OpenLoopIntegration.h  \
+ C:/Users/RARogers/sail-trim/MPLABXProjects/gpsAnVIMU_bTMaster.X/include/ClosedLoopIntegration.h  \
+ C:/CMPE167/include/serial.h 
