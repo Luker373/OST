@@ -2,7 +2,8 @@
 #include <stdlib.h>
 
 float longitude=0, latitude=0, alt=0, speed=0;
-float freq = 0, windDegree = 0, windSpeed = 0;
+float freq = 0, windDegree = 0, windSpeed = 0, track = 45;
+int boomAngle = 0;
 int time[3];
 int satellites=0, fix=0;
 int i = 0;
@@ -31,13 +32,13 @@ void processSentence(char *str){
     }
 }
 
-// $GNTST, (speed), (wind speed), (wind dir), (heading), (boom angle), (timestamp), *(checksum) <LF>
+// $GNTST, (speed), (wind speed), (wind dir), (heading), (boom angle), (timestamp), *(checksum) <CR><LF>
 void createGNTST(char *str){
         char csNL[5];
         char buffer[10];
         char out[80];
         
-        sprintf(out, "$GNTST,%.2f,%.2f,%.2f,%.2f,%.2f,", getSpeed(), getWindSpeed(),getWindDegree(),-1.0,-1.0);
+        sprintf(out, "$GNTST,%.2f,%.2f,%.2f,%.2f,%d,", getSpeed(), getWindSpeed(),getWindDegree(),-1.0,getBoomAngle());
         if(getHour() < 10)
           strcat(out, "0");
         itoa(buffer, getHour(), 10);
@@ -102,7 +103,9 @@ void createGNOST(char *str){
         char buffer[10];
         char out[80];
         
-        sprintf(out, "$GNOST,%d,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f,", -1, getLat()/100, getLong()/100, getWindSpeed(),getWindDegree(),-1.0,-1.0);
+        sprintf(out, "$GNOST,%.2f,%d,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f,", getSpeed(), -1, getLat()/100, getLong()/100, getWindSpeed(),getWindDegree(),track,getBoomAngle());
+
+//        sprintf(out, "$GNOST,%d,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f,", -1, getLat()/100, getLong()/100, getWindSpeed(),getWindDegree(),-1.0,getBoomAngle());
         if(getHour() < 10)
           strcat(out, "0");
         itoa(buffer, getHour(), 10);
@@ -297,6 +300,11 @@ void processRMC(char *str){
     // tok = speed(knots)
     if(tok != NULL)
         speed = atof(tok);
+    tok = strtok(NULL, ",");
+    // tok = track(degrees)
+    if(tok != NULL)
+        track = atof(tok);
+    
 }
 
 void setWindSpeed(float f){
@@ -305,6 +313,18 @@ void setWindSpeed(float f){
 
 void setWindDegree(float f){
     windDegree = f;
+}
+
+void setBoomAngle(int i){
+    boomAngle = i;
+}
+
+int getBoomAngle(void){
+    return boomAngle;
+}
+
+float getTrack(void){
+    return track;
 }
 
 float getWindSpeed(void){
