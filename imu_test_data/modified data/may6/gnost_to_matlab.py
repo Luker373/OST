@@ -15,10 +15,10 @@ idx = 0
 for line in f:
     line = line.translate({ord(c): None for c in '\''})
     lineDict[idx] = line.split(",")
-    boat_s_arr[idx] = lineDict[idx][4]
-    boat_d_arr[idx] = lineDict[idx][5]
-    wind_s_arr[idx] = lineDict[idx][6]
-    wind_d_arr[idx] = lineDict[idx][7]
+    boat_s_arr[idx] = lineDict[idx][6]
+    boat_d_arr[idx] = lineDict[idx][7]
+    wind_s_arr[idx] = lineDict[idx][4]
+    wind_d_arr[idx] = lineDict[idx][5]
     timstamp_arr[idx] = lineDict[idx][9].split("*")[0]
     idx = idx + 1
 
