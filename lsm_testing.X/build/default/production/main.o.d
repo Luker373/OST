@@ -1,0 +1,19 @@
+build/default/production/main.o:  \
+main.c  \
+include/serialcomm.h  \
+ include/serialcomm.h  \
+include/serial.h  \
+include/gpsLib.h  \
+include/AD.h  \
+ include/BOARD.h  \
+include/INPUT_CAPTURE.h  \
+include/BOARD.h  \
+include/I2C.h  \
+ include/LSM9DS1_func.h  \
+include/LSM9DS1.h  \
+include/DCM.h  \
+ include/MatrixFunctions.h  \
+include/MatrixFunctions.h  \
+ include/OpenLoopIntegration.h  \
+include/ClosedLoopIntegration.h  \
+ include/serial.h 
