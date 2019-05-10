@@ -103,7 +103,7 @@ void createGNOST(char *str){
         char buffer[10];
         char out[80];
         
-        sprintf(out, "$GNOST,%d,%.6f,%.6f,%.2f,%.2f,%.2f,%.2f,%.2f,",-1, getLat()/100, getLong()/100, getWindSpeed(),getWindDegree(), getSpeed(),track,getBoomAngle());
+        sprintf(out, "$GNOST,%d,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f,",-1, getLat()/100, getLong()/100, getWindSpeed(),getWindDegree(), getSpeed(),track,getBoomAngle());
 
 //        sprintf(out, "$GNOST,%d,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f,", -1, getLat()/100, getLong()/100, getWindSpeed(),getWindDegree(),-1.0,getBoomAngle());
         if(getHour() < 10)

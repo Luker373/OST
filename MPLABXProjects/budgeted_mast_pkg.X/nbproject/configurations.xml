@@ -4,21 +4,25 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
-      <itemPath>C:/Users/Luke_LPT/MPLABXProjects/budgeted_mast_pkg.X/include/BOARD.h</itemPath>
-      <itemPath>C:/Users/Luke_LPT/MPLABXProjects/budgeted_mast_pkg.X/include/MatrixFunctions.h</itemPath>
-      <itemPath>C:/Users/Luke_LPT/MPLABXProjects/budgeted_mast_pkg.X/include/AD.h</itemPath>
-      <itemPath>C:/Users/Luke_LPT/MPLABXProjects/budgeted_mast_pkg.X/include/ClosedLoopIntegration.h</itemPath>
-      <itemPath>C:/Users/Luke_LPT/MPLABXProjects/budgeted_mast_pkg.X/include/DCM.h</itemPath>
-      <itemPath>C:/Users/Luke_LPT/MPLABXProjects/budgeted_mast_pkg.X/include/gpsLib.h</itemPath>
-      <itemPath>C:/Users/Luke_LPT/MPLABXProjects/budgeted_mast_pkg.X/include/I2C.h</itemPath>
-      <itemPath>C:/Users/Luke_LPT/MPLABXProjects/budgeted_mast_pkg.X/include/INPUT_CAPTURE.h</itemPath>
-      <itemPath>C:/Users/Luke_LPT/MPLABXProjects/budgeted_mast_pkg.X/include/LSM9DS1.h</itemPath>
-      <itemPath>C:/Users/Luke_LPT/MPLABXProjects/budgeted_mast_pkg.X/include/LSM9DS1_func.h</itemPath>
-      <itemPath>C:/Users/Luke_LPT/MPLABXProjects/budgeted_mast_pkg.X/include/OpenLoopIntegration.h</itemPath>
-      <itemPath>C:/Users/Luke_LPT/MPLABXProjects/budgeted_mast_pkg.X/include/serial.h</itemPath>
-      <itemPath>C:/Users/Luke_LPT/MPLABXProjects/budgeted_mast_pkg.X/include/serialcomm.h</itemPath>
-      <itemPath>C:/Users/Luke_LPT/MPLABXProjects/budgeted_mast_pkg.X/include/timers.h</itemPath>
-      <itemPath>include/vars.h</itemPath>
+      <logicalFolder name="include" displayName="include" projectFiles="true">
+        <itemPath>include/AD.h</itemPath>
+        <itemPath>include/BOARD.h</itemPath>
+        <itemPath>include/ClosedLoopIntegration.h</itemPath>
+        <itemPath>include/data_processing.h</itemPath>
+        <itemPath>include/DCM.h</itemPath>
+        <itemPath>include/gpsLib.h</itemPath>
+        <itemPath>include/I2C.h</itemPath>
+        <itemPath>include/INPUT_CAPTURE.h</itemPath>
+        <itemPath>include/LSM9DS1.h</itemPath>
+        <itemPath>include/LSM9DS1_func.h</itemPath>
+        <itemPath>include/MatrixFunctions.h</itemPath>
+        <itemPath>include/MatrixMath.h</itemPath>
+        <itemPath>include/OpenLoopIntegration.h</itemPath>
+        <itemPath>include/serial.h</itemPath>
+        <itemPath>include/serialcomm.h</itemPath>
+        <itemPath>include/timers.h</itemPath>
+        <itemPath>include/vars.h</itemPath>
+      </logicalFolder>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -28,23 +32,23 @@
                    displayName="Source Files"
                    projectFiles="true">
       <logicalFolder name="src" displayName="src" projectFiles="true">
-        <itemPath>C:/Users/Luke_LPT/MPLABXProjects/budgeted_mast_pkg.X/src/AD.c</itemPath>
-        <itemPath>C:/Users/Luke_LPT/MPLABXProjects/budgeted_mast_pkg.X/src/anemometer.c</itemPath>
-        <itemPath>C:/Users/Luke_LPT/MPLABXProjects/budgeted_mast_pkg.X/src/BOARD.c</itemPath>
-        <itemPath>C:/Users/Luke_LPT/MPLABXProjects/budgeted_mast_pkg.X/src/ClosedLoopIntegration.c</itemPath>
-        <itemPath>C:/Users/Luke_LPT/MPLABXProjects/budgeted_mast_pkg.X/src/DCM.c</itemPath>
-        <itemPath>C:/Users/Luke_LPT/MPLABXProjects/budgeted_mast_pkg.X/src/DS1AttitudeEst.c</itemPath>
-        <itemPath>C:/Users/Luke_LPT/MPLABXProjects/budgeted_mast_pkg.X/src/gpsLib.c</itemPath>
-        <itemPath>C:/Users/Luke_LPT/MPLABXProjects/budgeted_mast_pkg.X/src/I2C.c</itemPath>
-        <itemPath>C:/Users/Luke_LPT/MPLABXProjects/budgeted_mast_pkg.X/src/INPUT_CAPTURE.c</itemPath>
-        <itemPath>C:/Users/Luke_LPT/MPLABXProjects/budgeted_mast_pkg.X/src/LSM9DS1_func.c</itemPath>
-        <itemPath>C:/Users/Luke_LPT/MPLABXProjects/budgeted_mast_pkg.X/src/MatrixFunctions.c</itemPath>
-        <itemPath>C:/Users/Luke_LPT/MPLABXProjects/budgeted_mast_pkg.X/src/OpenLoopIntegration.c</itemPath>
-        <itemPath>C:/Users/Luke_LPT/MPLABXProjects/budgeted_mast_pkg.X/src/serial.c</itemPath>
-        <itemPath>C:/Users/Luke_LPT/MPLABXProjects/budgeted_mast_pkg.X/src/serialcomm.c</itemPath>
-        <itemPath>C:/Users/Luke_LPT/MPLABXProjects/budgeted_mast_pkg.X/src/timers.c</itemPath>
-        <itemPath>include/vars.c</itemPath>
+        <itemPath>src/AD.c</itemPath>
+        <itemPath>src/anemometer.c</itemPath>
+        <itemPath>src/BOARD.c</itemPath>
+        <itemPath>src/ClosedLoopIntegration.c</itemPath>
+        <itemPath>src/DCM.c</itemPath>
+        <itemPath>src/DS1AttitudeEst.c</itemPath>
+        <itemPath>src/gpsLib.c</itemPath>
+        <itemPath>src/I2C.c</itemPath>
+        <itemPath>src/INPUT_CAPTURE.c</itemPath>
+        <itemPath>src/LSM9DS1_func.c</itemPath>
+        <itemPath>src/MatrixFunctions.c</itemPath>
         <itemPath>src/MatrixMath.c</itemPath>
+        <itemPath>src/OpenLoopIntegration.c</itemPath>
+        <itemPath>src/serial.c</itemPath>
+        <itemPath>src/serialcomm.c</itemPath>
+        <itemPath>src/timers.c</itemPath>
+        <itemPath>src/vars.c</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
@@ -109,7 +113,7 @@
         <property key="enable-symbols" value="true"/>
         <property key="enable-unroll-loops" value="false"/>
         <property key="exclude-floating-point" value="false"/>
-        <property key="extra-include-directories" value="include"/>
+        <property key="extra-include-directories" value="include;src"/>
         <property key="generate-16-bit-code" value="false"/>
         <property key="generate-micro-compressed-code" value="false"/>
         <property key="isolate-each-function" value="false"/>
@@ -233,42 +237,6 @@
       <item path="C:/Users/Luke_LPT/MPLABXProjects/budgeted_mast_pkg.X/main.c"
             ex="true"
             overriding="false">
-      </item>
-      <item path="C:/Users/Luke_LPT/MPLABXProjects/budgeted_mast_pkg.X/src/ClosedLoopIntegration.c"
-            ex="true"
-            overriding="false">
-      </item>
-      <item path="C:/Users/Luke_LPT/MPLABXProjects/budgeted_mast_pkg.X/src/DCM.c"
-            ex="true"
-            overriding="false">
-      </item>
-      <item path="C:/Users/Luke_LPT/MPLABXProjects/budgeted_mast_pkg.X/src/DS1AttitudeEst.c"
-            ex="true"
-            overriding="false">
-        <C32>
-        </C32>
-        <C32-AR>
-        </C32-AR>
-        <C32-AS>
-        </C32-AS>
-        <C32-LD>
-        </C32-LD>
-        <C32CPP>
-        </C32CPP>
-        <C32Global>
-        </C32Global>
-      </item>
-      <item path="C:/Users/Luke_LPT/MPLABXProjects/budgeted_mast_pkg.X/src/MatrixFunctions.c"
-            ex="true"
-            overriding="false">
-      </item>
-      <item path="C:/Users/Luke_LPT/MPLABXProjects/budgeted_mast_pkg.X/src/OpenLoopIntegration.c"
-            ex="true"
-            overriding="false">
-      </item>
-      <item path="C:/Users/Luke_LPT/MPLABXProjects/budgeted_mast_pkg.X/src/anemometer.c"
-            ex="true"
-            overriding="false">
         <C32>
         </C32>
         <C32-AR>
@@ -318,7 +286,6 @@
         <property key="UART1" value="true"/>
         <property key="UART2" value="true"/>
         <property key="debugoptions.useswbreakpoints" value="false"/>
-        <property key="firmware.download.all" value="false"/>
         <property key="hwtoolclock.frcindebug" value="false"/>
         <property key="memories.aux" value="false"/>
         <property key="memories.bootflash" value="true"/>
@@ -354,8 +321,44 @@
         <property key="voltagevalue" value="3.25"/>
       </PICkit3PlatformTool>
       <item path="include/lsm_kalman.c" ex="true" overriding="false">
+        <C32>
+        </C32>
+        <C32-AR>
+        </C32-AR>
+        <C32-AS>
+        </C32-AS>
+        <C32-LD>
+        </C32-LD>
+        <C32CPP>
+        </C32CPP>
+        <C32Global>
+        </C32Global>
       </item>
       <item path="include/lsm_triad.c" ex="true" overriding="false">
+        <C32>
+        </C32>
+        <C32-AR>
+        </C32-AR>
+        <C32-AS>
+        </C32-AS>
+        <C32-LD>
+        </C32-LD>
+        <C32CPP>
+        </C32CPP>
+        <C32Global>
+        </C32Global>
+      </item>
+      <item path="src/ClosedLoopIntegration.c" ex="true" overriding="false">
+      </item>
+      <item path="src/DCM.c" ex="true" overriding="false">
+      </item>
+      <item path="src/DS1AttitudeEst.c" ex="true" overriding="false">
+      </item>
+      <item path="src/MatrixFunctions.c" ex="true" overriding="false">
+      </item>
+      <item path="src/OpenLoopIntegration.c" ex="true" overriding="false">
+      </item>
+      <item path="src/anemometer.c" ex="true" overriding="false">
       </item>
     </conf>
   </confs>
