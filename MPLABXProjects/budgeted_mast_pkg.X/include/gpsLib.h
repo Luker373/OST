@@ -52,6 +52,7 @@ int checkCS(char *str);
 void processGGA(char *str);
 void processGSA(char *str);
 void processRMC(char *str);
+void processGNOST(char *str);
 void setWindSpeed(float f);
 void setWindDegree(float f);
 float getWindSpeed(void);

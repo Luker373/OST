@@ -3,6 +3,7 @@ extern int attEstDelay;
 extern float deltaT;
 extern float roll, pitch, yaw;
 extern int loopStep;
+extern float radToDeg;
 
 //extern float biasX = 17, biasY = 30, biasZ = -45; // rammess gyro biases
 //extern int biasX = 40, biasY = -118, biasZ = 44;   // 8.75 mdps/LSB biases

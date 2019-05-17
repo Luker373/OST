@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=include/main_lsm.c src/AD.c src/BOARD.c src/gpsLib.c src/I2C.c src/INPUT_CAPTURE.c src/LSM9DS1_func.c src/MatrixMath.c src/serial.c src/serialcomm.c src/timers.c src/vars.c
+SOURCEFILES_QUOTED_IF_SPACED=src/AD.c src/BOARD.c src/gpsLib.c src/I2C.c src/INPUT_CAPTURE.c src/LSM9DS1_func.c src/MatrixMath.c src/serial.c src/serialcomm.c src/timers.c src/vars.c include/main_lsm.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/include/main_lsm.o ${OBJECTDIR}/src/AD.o ${OBJECTDIR}/src/BOARD.o ${OBJECTDIR}/src/gpsLib.o ${OBJECTDIR}/src/I2C.o ${OBJECTDIR}/src/INPUT_CAPTURE.o ${OBJECTDIR}/src/LSM9DS1_func.o ${OBJECTDIR}/src/MatrixMath.o ${OBJECTDIR}/src/serial.o ${OBJECTDIR}/src/serialcomm.o ${OBJECTDIR}/src/timers.o ${OBJECTDIR}/src/vars.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/include/main_lsm.o.d ${OBJECTDIR}/src/AD.o.d ${OBJECTDIR}/src/BOARD.o.d ${OBJECTDIR}/src/gpsLib.o.d ${OBJECTDIR}/src/I2C.o.d ${OBJECTDIR}/src/INPUT_CAPTURE.o.d ${OBJECTDIR}/src/LSM9DS1_func.o.d ${OBJECTDIR}/src/MatrixMath.o.d ${OBJECTDIR}/src/serial.o.d ${OBJECTDIR}/src/serialcomm.o.d ${OBJECTDIR}/src/timers.o.d ${OBJECTDIR}/src/vars.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/src/AD.o ${OBJECTDIR}/src/BOARD.o ${OBJECTDIR}/src/gpsLib.o ${OBJECTDIR}/src/I2C.o ${OBJECTDIR}/src/INPUT_CAPTURE.o ${OBJECTDIR}/src/LSM9DS1_func.o ${OBJECTDIR}/src/MatrixMath.o ${OBJECTDIR}/src/serial.o ${OBJECTDIR}/src/serialcomm.o ${OBJECTDIR}/src/timers.o ${OBJECTDIR}/src/vars.o ${OBJECTDIR}/include/main_lsm.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/src/AD.o.d ${OBJECTDIR}/src/BOARD.o.d ${OBJECTDIR}/src/gpsLib.o.d ${OBJECTDIR}/src/I2C.o.d ${OBJECTDIR}/src/INPUT_CAPTURE.o.d ${OBJECTDIR}/src/LSM9DS1_func.o.d ${OBJECTDIR}/src/MatrixMath.o.d ${OBJECTDIR}/src/serial.o.d ${OBJECTDIR}/src/serialcomm.o.d ${OBJECTDIR}/src/timers.o.d ${OBJECTDIR}/src/vars.o.d ${OBJECTDIR}/include/main_lsm.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/include/main_lsm.o ${OBJECTDIR}/src/AD.o ${OBJECTDIR}/src/BOARD.o ${OBJECTDIR}/src/gpsLib.o ${OBJECTDIR}/src/I2C.o ${OBJECTDIR}/src/INPUT_CAPTURE.o ${OBJECTDIR}/src/LSM9DS1_func.o ${OBJECTDIR}/src/MatrixMath.o ${OBJECTDIR}/src/serial.o ${OBJECTDIR}/src/serialcomm.o ${OBJECTDIR}/src/timers.o ${OBJECTDIR}/src/vars.o
+OBJECTFILES=${OBJECTDIR}/src/AD.o ${OBJECTDIR}/src/BOARD.o ${OBJECTDIR}/src/gpsLib.o ${OBJECTDIR}/src/I2C.o ${OBJECTDIR}/src/INPUT_CAPTURE.o ${OBJECTDIR}/src/LSM9DS1_func.o ${OBJECTDIR}/src/MatrixMath.o ${OBJECTDIR}/src/serial.o ${OBJECTDIR}/src/serialcomm.o ${OBJECTDIR}/src/timers.o ${OBJECTDIR}/src/vars.o ${OBJECTDIR}/include/main_lsm.o
 
 # Source Files
-SOURCEFILES=include/main_lsm.c src/AD.c src/BOARD.c src/gpsLib.c src/I2C.c src/INPUT_CAPTURE.c src/LSM9DS1_func.c src/MatrixMath.c src/serial.c src/serialcomm.c src/timers.c src/vars.c
+SOURCEFILES=src/AD.c src/BOARD.c src/gpsLib.c src/I2C.c src/INPUT_CAPTURE.c src/LSM9DS1_func.c src/MatrixMath.c src/serial.c src/serialcomm.c src/timers.c src/vars.c include/main_lsm.c
 
 
 CFLAGS=
@@ -106,12 +106,6 @@ endif
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: compile
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${OBJECTDIR}/include/main_lsm.o: include/main_lsm.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/include" 
-	@${RM} ${OBJECTDIR}/include/main_lsm.o.d 
-	@${RM} ${OBJECTDIR}/include/main_lsm.o 
-	@${FIXDEPS} "${OBJECTDIR}/include/main_lsm.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"include" -I"src" -MMD -MF "${OBJECTDIR}/include/main_lsm.o.d" -o ${OBJECTDIR}/include/main_lsm.o include/main_lsm.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
-	
 ${OBJECTDIR}/src/AD.o: src/AD.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/src" 
 	@${RM} ${OBJECTDIR}/src/AD.o.d 
@@ -178,13 +172,13 @@ ${OBJECTDIR}/src/vars.o: src/vars.c  nbproject/Makefile-${CND_CONF}.mk
 	@${RM} ${OBJECTDIR}/src/vars.o 
 	@${FIXDEPS} "${OBJECTDIR}/src/vars.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"include" -I"src" -MMD -MF "${OBJECTDIR}/src/vars.o.d" -o ${OBJECTDIR}/src/vars.o src/vars.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
 	
-else
 ${OBJECTDIR}/include/main_lsm.o: include/main_lsm.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/include" 
 	@${RM} ${OBJECTDIR}/include/main_lsm.o.d 
 	@${RM} ${OBJECTDIR}/include/main_lsm.o 
-	@${FIXDEPS} "${OBJECTDIR}/include/main_lsm.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"include" -I"src" -MMD -MF "${OBJECTDIR}/include/main_lsm.o.d" -o ${OBJECTDIR}/include/main_lsm.o include/main_lsm.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
+	@${FIXDEPS} "${OBJECTDIR}/include/main_lsm.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"include" -I"src" -MMD -MF "${OBJECTDIR}/include/main_lsm.o.d" -o ${OBJECTDIR}/include/main_lsm.o include/main_lsm.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
 	
+else
 ${OBJECTDIR}/src/AD.o: src/AD.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/src" 
 	@${RM} ${OBJECTDIR}/src/AD.o.d 
@@ -250,6 +244,12 @@ ${OBJECTDIR}/src/vars.o: src/vars.c  nbproject/Makefile-${CND_CONF}.mk
 	@${RM} ${OBJECTDIR}/src/vars.o.d 
 	@${RM} ${OBJECTDIR}/src/vars.o 
 	@${FIXDEPS} "${OBJECTDIR}/src/vars.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"include" -I"src" -MMD -MF "${OBJECTDIR}/src/vars.o.d" -o ${OBJECTDIR}/src/vars.o src/vars.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
+	
+${OBJECTDIR}/include/main_lsm.o: include/main_lsm.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/include" 
+	@${RM} ${OBJECTDIR}/include/main_lsm.o.d 
+	@${RM} ${OBJECTDIR}/include/main_lsm.o 
+	@${FIXDEPS} "${OBJECTDIR}/include/main_lsm.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -I"include" -I"src" -MMD -MF "${OBJECTDIR}/include/main_lsm.o.d" -o ${OBJECTDIR}/include/main_lsm.o include/main_lsm.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
 	
 endif
 

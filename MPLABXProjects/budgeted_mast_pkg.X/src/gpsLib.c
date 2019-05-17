@@ -1,16 +1,25 @@
 #include "gpsLib.h"
 #include <stdlib.h>
+#include <math.h>
+
+#define WINDOW_SIZE 100
+#define WINDOW_SUM (WINDOW_SIZE)*(WINDOW_SIZE+1)/2
 
 float longitude=0, latitude=0, alt=0, speed=0;
 float freq = 0, windDegree = 0, windSpeed = 0, track = 45;
 int boomAngle = 0;
 int time[3];
 int satellites=0, fix=0;
-int i = 0;
+int i = 0, startup = 1;
 char msg[79];
 char tempMsg[79];
 char printmsg[200];
 char temp[30];
+
+int windSupdated=0, windDupdated=0, windSidx=0, windDidx=0, windSsum =0, windDsum =0;
+int windSarr[WINDOW_SIZE];
+int windDraw[WINDOW_SIZE];
+int windDarr[WINDOW_SIZE];
 
 
 void processSentence(char *str){
@@ -28,6 +37,9 @@ void processSentence(char *str){
         }
         else if(!strcmp(tok, "$GNRMC")){
             processRMC(str);
+        }
+        else if(!strcmp(tok, "$GNOST")){
+            processGNOST(str);
         }
     }
 }
@@ -273,6 +285,53 @@ void processGGA(char *str){
         alt = atof(tok);
 }
 
+// $GNOST, (filtered), (lat), (long), (wind speed), (wind dir), (speed), (heading), (boom angle), (timestamp), *(checksum) <LF>
+void processGNOST(char *str){
+    char *tok = strtok(NULL, ",");
+    // tok = filtered stuff
+    
+    tok = strtok(NULL, ",");
+    // tok = lat
+    latitude = atof(tok);
+            
+    tok = strtok(NULL, ",");
+    // tok = long
+    longitude = atof(tok);
+    
+    tok = strtok(NULL, ",");
+    // tok = wind speed
+    windSpeed = atof(tok);
+    
+    tok = strtok(NULL, ",");
+    // tok = wind dir
+    windDegree = atof(tok);
+    
+    tok = strtok(NULL, ",");
+    // tok = speed
+    speed = atof(tok);
+    
+    tok = strtok(NULL, ",");
+    // tok = heading
+    track = atof(tok);
+    
+    tok = strtok(NULL, ",");
+    // tok = boom angle
+    
+    tok = strtok(NULL, ",");
+    if(tok != NULL){
+        int t = atoi(tok);
+        if (t < 0 || t > 999999)
+            return;
+        time[0] = t / 10000;
+        time[1] = (t % 10000) / 100;
+        time[2] = (t % 100);
+    }
+    
+    tok = strtok(NULL, ",");
+    // tok = checksum
+       
+}
+
 void processGSA(char *str){
 	char *tok = strtok(NULL, ",");
 	// tok = num sentences for full data
@@ -314,11 +373,40 @@ void processRMC(char *str){
 }
 
 void setWindSpeed(float f){
-    windSpeed = f;
+    if (f > 100)
+        f = 0;
+    windSupdated = 1;
+    windSidx = windSidx % WINDOW_SIZE;
+    windSsum += (f*1000*WINDOW_SIZE);
+    for(i =0; i < WINDOW_SIZE; ++i){
+        windSsum -= windSarr[i];
+    }
+    windSarr[windSidx] = (int)(f*1000);
+    windSidx++;
+    //windSpeed = f;
 }
 
 void setWindDegree(float f){
-    windDegree = f;
+    windDupdated = 1;
+    f += 360;
+    int windDold = (windDidx - 1) % WINDOW_SIZE;
+    windDidx = windDidx % WINDOW_SIZE;
+    windDraw[windDidx] = f;
+    if(startup != 1){
+        if(f < 410 && windDraw[windDold] > 660)
+            f = windDarr[windDold]/10 + (360 - windDraw[windDold]) + f;
+        else if(f > 660 && windDraw[windDold] < 410)
+            f = windDarr[windDold]/10 - (360 - f + windDraw[windDold]);
+        else
+            f = windDarr[windDold]/10 - (windDraw[windDold] - f);
+    }else{ startup = 0; }    
+    windDsum += f*10*WINDOW_SIZE;
+    for(i =0; i < WINDOW_SIZE; ++i){
+        windDsum -= windDarr[i];
+    }
+    windDarr[windDidx] = (int)(f*10);
+    ++windDidx;
+    //windDegree = f;
 }
 
 void setBoomAngle(int i){
@@ -334,10 +422,19 @@ float getTrack(void){
 }
 
 float getWindSpeed(void){
+    if(windSupdated == 0)
+        return windSpeed;
+    windSupdated = 0;
+    windSpeed = (float)(windSsum) / (1000*WINDOW_SUM);
     return windSpeed;
 }
 
 float getWindDegree(void){
+    if(windDupdated == 0)
+        return windDegree;
+    windDupdated = 0;
+    windDegree = windDsum / (10*WINDOW_SUM);
+    windDegree = fmod(windDegree, 360);
     return windDegree;
 }
 

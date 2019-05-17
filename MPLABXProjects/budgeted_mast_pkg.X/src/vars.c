@@ -4,6 +4,8 @@ float deltaT = 0.05;
 float roll, pitch, yaw;
 int loopStep = 0;
 
+float radToDeg = 180 / 3.1415;
+
 //float biasX = 17, biasY = 30, biasZ = -45; // rammess gyro biases
 //int biasX = 40, biasY = -118, biasZ = 44;   // 8.75 mdps/LSB biases
 float biasX = -0.134259259, biasY = -33.1219135, biasZ = 17.83641975;   // 70 mdps/LSB biases
