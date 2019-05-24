@@ -64,7 +64,8 @@ float getSpeed(void);
 int getHour(void);
 int getMinute(void);
 int getSecond(void);
-
+void setCompassDegree(float f);
+float getCompassDegree(void);
 
     /* Provide C++ Compatibility */
 #ifdef __cplusplus

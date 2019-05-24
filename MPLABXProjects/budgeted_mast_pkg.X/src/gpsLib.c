@@ -22,6 +22,12 @@ int windDraw[WINDOW_SIZE];
 int windDarr[WINDOW_SIZE];
 
 
+int compassSupdated = 0, compassDupdated = 0, compassSidx = 0, compassDidx = 0, compassSsum = 0, compassDsum = 0, startup = 1, j;
+int compassSarr[WINDOW_SIZE];
+int compassDraw[WINDOW_SIZE];
+int compassDarr[WINDOW_SIZE];
+float compassDegree;
+
 void processSentence(char *str){
     strcpy(tempMsg, str);
     
@@ -375,6 +381,7 @@ void processRMC(char *str){
 void setWindSpeed(float f){
     if (f > 100)
         f = 0;
+    f = (int)f;
     windSupdated = 1;
     windSidx = windSidx % WINDOW_SIZE;
     windSsum += (f*1000*WINDOW_SIZE);
@@ -389,6 +396,7 @@ void setWindSpeed(float f){
 void setWindDegree(float f){
     windDupdated = 1;
     f += 360;
+    f = (int)f;
     int windDold = (windDidx - 1) % WINDOW_SIZE;
     windDidx = windDidx % WINDOW_SIZE;
     windDraw[windDidx] = f;
@@ -464,4 +472,38 @@ int getSecond(void){
 
 float getSpeed(void){
     return speed;
+}
+
+void setCompassDegree(float f) {
+    f = (int)f;
+    compassDupdated = 1;
+    int compassDold = (compassDidx - 1) % WINDOW_SIZE;
+    compassDidx = compassDidx % WINDOW_SIZE;
+    compassDraw[compassDidx] = f;
+    if (startup != 1) {
+        if (f < 410 && compassDraw[compassDold] > 660)
+            f = compassDarr[compassDold] / 10 + (360 - compassDraw[compassDold]) + f;
+        else if (f > 660 && compassDraw[compassDold] < 410)
+            f = compassDarr[compassDold] / 10 - (360 - f + compassDraw[compassDold]);
+        else
+            f = compassDarr[compassDold] / 10 - (compassDraw[compassDold] - f);
+    } else {
+        startup = 0;
+    }
+    compassDsum += f * 10 * WINDOW_SIZE;
+    for (j = 0; j < WINDOW_SIZE; ++j) {
+        compassDsum -= compassDarr[j];
+    }
+    compassDarr[compassDidx] = (int) (f * 10);
+    ++compassDidx;
+    //compassDegree = f;
+}
+
+float getCompassDegree(void) {
+    if (compassDupdated == 0)
+        return compassDegree;
+    compassDupdated = 0;
+    compassDegree = compassDsum / (10 * WINDOW_SUM);
+    compassDegree = fmod(compassDegree, 360);
+    return compassDegree;
 }
