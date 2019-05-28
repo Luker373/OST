@@ -22,11 +22,17 @@
         <itemPath>include/serialcomm.h</itemPath>
         <itemPath>include/timers.h</itemPath>
         <itemPath>include/vars.h</itemPath>
+        <itemPath>include/MPU9250.h</itemPath>
+        <itemPath>include/Oled.h</itemPath>
+        <itemPath>include/OledDriver.h</itemPath>
+        <itemPath>include/Ascii.h</itemPath>
+        <itemPath>include/vars_1.h</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
                    projectFiles="true">
+      <itemPath>C:/Users/Luke_LPT/Desktop/CMPE167/bootloader320.ld</itemPath>
     </logicalFolder>
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
@@ -49,6 +55,11 @@
         <itemPath>src/serialcomm.c</itemPath>
         <itemPath>src/timers.c</itemPath>
         <itemPath>src/vars.c</itemPath>
+        <itemPath>include/MPU9250.c</itemPath>
+        <itemPath>src/Oled.c</itemPath>
+        <itemPath>src/OledDriver.c</itemPath>
+        <itemPath>include/Ascii.c</itemPath>
+        <itemPath>src/vars_1.c</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
@@ -60,6 +71,8 @@
     <itemPath>include/main_lsm.c</itemPath>
     <itemPath>include/lsm_kalman.c</itemPath>
     <itemPath>include/lsm_triad.c</itemPath>
+    <itemPath>include/main_compass.c</itemPath>
+    <itemPath>include/main_lsm_1.c</itemPath>
   </logicalFolder>
   <sourceRootList>
     <Elem>include</Elem>
@@ -75,11 +88,11 @@
         <targetPluginBoard></targetPluginBoard>
         <platformTool>PICkit3PlatformTool</platformTool>
         <languageToolchain>XC32</languageToolchain>
-        <languageToolchainVersion>2.05</languageToolchainVersion>
+        <languageToolchainVersion>2.15</languageToolchainVersion>
         <platform>3</platform>
       </toolsSet>
       <packs>
-        <pack name="PIC32MX_DFP" vendor="Microchip" version="0.1.20"/>
+        <pack name="PIC32MX_DFP" vendor="Microchip" version="1.0.25"/>
       </packs>
       <compileType>
         <linkerTool>
@@ -234,6 +247,22 @@
         <property key="save-temps" value="false"/>
         <property key="wpo-lto" value="false"/>
       </C32Global>
+      <item path="C:/Users/Luke_LPT/Desktop/CMPE167/bootloader320.ld"
+            ex="true"
+            overriding="false">
+        <C32>
+        </C32>
+        <C32-AR>
+        </C32-AR>
+        <C32-AS>
+        </C32-AS>
+        <C32-LD>
+        </C32-LD>
+        <C32CPP>
+        </C32CPP>
+        <C32Global>
+        </C32Global>
+      </item>
       <item path="C:/Users/Luke_LPT/MPLABXProjects/budgeted_mast_pkg.X/main.c"
             ex="true"
             overriding="false">
@@ -286,6 +315,7 @@
         <property key="UART1" value="true"/>
         <property key="UART2" value="true"/>
         <property key="debugoptions.useswbreakpoints" value="false"/>
+        <property key="firmware.download.all" value="false"/>
         <property key="hwtoolclock.frcindebug" value="false"/>
         <property key="memories.aux" value="false"/>
         <property key="memories.bootflash" value="true"/>
@@ -335,6 +365,48 @@
         </C32Global>
       </item>
       <item path="include/lsm_triad.c" ex="true" overriding="false">
+        <C32>
+        </C32>
+        <C32-AR>
+        </C32-AR>
+        <C32-AS>
+        </C32-AS>
+        <C32-LD>
+        </C32-LD>
+        <C32CPP>
+        </C32CPP>
+        <C32Global>
+        </C32Global>
+      </item>
+      <item path="include/main_compass.c" ex="true" overriding="false">
+        <C32>
+        </C32>
+        <C32-AR>
+        </C32-AR>
+        <C32-AS>
+        </C32-AS>
+        <C32-LD>
+        </C32-LD>
+        <C32CPP>
+        </C32CPP>
+        <C32Global>
+        </C32Global>
+      </item>
+      <item path="include/main_lsm.c" ex="true" overriding="false">
+        <C32>
+        </C32>
+        <C32-AR>
+        </C32-AR>
+        <C32-AS>
+        </C32-AS>
+        <C32-LD>
+        </C32-LD>
+        <C32CPP>
+        </C32CPP>
+        <C32Global>
+        </C32Global>
+      </item>
+      <item path="include/vars.h" ex="true" overriding="false">
         <C32>
         </C32>
         <C32-AR>
@@ -419,6 +491,20 @@
         </C32Global>
       </item>
       <item path="src/anemometer.c" ex="true" overriding="false">
+        <C32>
+        </C32>
+        <C32-AR>
+        </C32-AR>
+        <C32-AS>
+        </C32-AS>
+        <C32-LD>
+        </C32-LD>
+        <C32CPP>
+        </C32CPP>
+        <C32Global>
+        </C32Global>
+      </item>
+      <item path="src/vars.c" ex="true" overriding="false">
         <C32>
         </C32>
         <C32-AR>

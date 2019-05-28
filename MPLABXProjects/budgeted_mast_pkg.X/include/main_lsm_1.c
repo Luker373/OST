@@ -19,7 +19,7 @@
  * 
  * 
  */
-#include "vars.h" // all the random variables needed
+#include "vars_1.h" // all the random variables needed
 #include "serialcomm.h"
 #include "gpsLib.h"
 #include <GenericTypeDefs.h>
@@ -36,6 +36,7 @@
 #include <MatrixMath.h>
 #include "BOARD.h"
 #include <I2C.h>
+#include "MPU9250.h"
 
 #pragma config FPLLODIV = DIV_1, FPLLMUL = MUL_20, FPLLIDIV = DIV_2, FWDTEN = OFF, FCKSM = CSECME, FPBDIV = DIV_1
 #pragma config OSCIOFNC = ON, POSCMOD = XT, FSOSCEN = ON, FNOSC = PRIPLL
@@ -49,6 +50,7 @@ int main(void) {
     char status[100];
 
     BOARD_Init();
+    PutChar(2, 'i');
     AD_Init();
     AD_AddPins(AD_A2);
     INCAP_Init();
@@ -124,7 +126,7 @@ int main(void) {
             accelReading[0][0] = accelVecShifted[0][0];
             accelReading[1][0] = accelVecShifted[1][0];
             accelReading[2][0] = accelVecShifted[2][0];
-            ?
+            
             magVec[0][0] = (float) MPU9250_ReadMagX();
             magVec[1][0] = (float) MPU9250_ReadMagY();
             magVec[2][0] = (float) MPU9250_ReadMagZ();
@@ -179,7 +181,8 @@ int main(void) {
             //      compass[i] = magHeading;
 
             // OR use Luke's alternative circular moving average
-            //      setcompassDegree(alignedCompassHeading);      
+            //      setcompassDegree(alignedCompassHeading);
+            
             setCompassDegree(magHeading);
 
             // (3) resum w newest element

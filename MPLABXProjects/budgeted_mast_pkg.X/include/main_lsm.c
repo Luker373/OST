@@ -19,7 +19,7 @@
  * 
  * 
  */
-#include "vars.h" // all the random variables needed
+#include "vars_1.h" // all the random variables needed
 #include "serialcomm.h"
 #include "gpsLib.h"
 #include <GenericTypeDefs.h>
@@ -46,9 +46,9 @@
 //#define biasX
 #define Kp_a 0.7
 #define Ki_a 0.05
-#define ACCEL_X_NULL 0	// no accel null shifts?
-#define ACCEL_Y_NULL 0
-#define ACCEL_Z_NULL 0
+//#define ACCEL_X_NULL 0	// no accel null shifts?
+//#define ACCEL_Y_NULL 0
+//#define ACCEL_Z_NULL 0
 #define ACCEL_SENS_SCALE 0.732    //+/- 16g
 //#define ACCEL_SENS_SCALE 0.061      //+/- 2g
 #define DELTA_T 0.05

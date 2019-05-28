@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <math.h>
 
-#define WINDOW_SIZE 100
+#define WINDOW_SIZE 30
 #define WINDOW_SUM (WINDOW_SIZE)*(WINDOW_SIZE+1)/2
 
 float longitude=0, latitude=0, alt=0, speed=0;
@@ -22,7 +22,7 @@ int windDraw[WINDOW_SIZE];
 int windDarr[WINDOW_SIZE];
 
 
-int compassSupdated = 0, compassDupdated = 0, compassSidx = 0, compassDidx = 0, compassSsum = 0, compassDsum = 0, startup = 1, j;
+int compassSupdated = 0, compassDupdated = 0, compassSidx = 0, compassDidx = 0, compassSsum = 0, compassDsum = 0, startup_c = 1, j;
 int compassSarr[WINDOW_SIZE];
 int compassDraw[WINDOW_SIZE];
 int compassDarr[WINDOW_SIZE];
@@ -121,7 +121,7 @@ void createGNOST(char *str){
         char buffer[10];
         char out[80];
         
-        sprintf(out, "$GNOST,%d,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f,",-1, getLat()/100, getLong()/100, getWindSpeed(),getWindDegree(), getSpeed(),track,getBoomAngle());
+        sprintf(out, "$GNOST,%d,%.4f,%.4f,%.2f,%.2f,%.2f,%.2f,%.2f,%.0f,",-1, getLat()/100, getLong()/100, getWindSpeed(),getWindDegree(), getSpeed(),track,getBoomAngle(),getCompassDegree());
 
 //        sprintf(out, "$GNOST,%d,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f,", -1, getLat()/100, getLong()/100, getWindSpeed(),getWindDegree(),-1.0,getBoomAngle());
         if(getHour() < 10)
@@ -475,35 +475,37 @@ float getSpeed(void){
 }
 
 void setCompassDegree(float f) {
-    f = (int)f;
-    compassDupdated = 1;
-    int compassDold = (compassDidx - 1) % WINDOW_SIZE;
-    compassDidx = compassDidx % WINDOW_SIZE;
-    compassDraw[compassDidx] = f;
-    if (startup != 1) {
-        if (f < 410 && compassDraw[compassDold] > 660)
-            f = compassDarr[compassDold] / 10 + (360 - compassDraw[compassDold]) + f;
-        else if (f > 660 && compassDraw[compassDold] < 410)
-            f = compassDarr[compassDold] / 10 - (360 - f + compassDraw[compassDold]);
-        else
-            f = compassDarr[compassDold] / 10 - (compassDraw[compassDold] - f);
-    } else {
-        startup = 0;
-    }
-    compassDsum += f * 10 * WINDOW_SIZE;
-    for (j = 0; j < WINDOW_SIZE; ++j) {
-        compassDsum -= compassDarr[j];
-    }
-    compassDarr[compassDidx] = (int) (f * 10);
-    ++compassDidx;
-    //compassDegree = f;
+//    f = (int)f;
+//    if (f < 0 || f > 360)
+//        return;
+//    compassDupdated = 1;
+//    int compassDold = (compassDidx - 1) % WINDOW_SIZE;
+//    compassDidx = compassDidx % WINDOW_SIZE;
+//    compassDraw[compassDidx] = f;
+//    if (startup_c != 1) {
+//        if (f < 410 && compassDraw[compassDold] > 660)
+//            f = compassDarr[compassDold] / 10 + (360 - compassDraw[compassDold]) + f;
+//        else if (f > 660 && compassDraw[compassDold] < 410)
+//            f = compassDarr[compassDold] / 10 - (360 - f + compassDraw[compassDold]);
+//        else
+//            f = compassDarr[compassDold] / 10 - (compassDraw[compassDold] - f);
+//    } else {
+//        startup_c = 0;
+//    }
+//    compassDsum += f * 10 * WINDOW_SIZE;
+//    for (j = 0; j < WINDOW_SIZE; ++j) {
+//        compassDsum -= compassDarr[j];
+//    }
+//    compassDarr[compassDidx] = (int) (f * 10);
+//    ++compassDidx;
+    compassDegree = f;
 }
 
 float getCompassDegree(void) {
     if (compassDupdated == 0)
         return compassDegree;
     compassDupdated = 0;
-    compassDegree = compassDsum / (10 * WINDOW_SUM);
-    compassDegree = fmod(compassDegree, 360);
+//    compassDegree = compassDsum / (10 * WINDOW_SUM);
+//    compassDegree = fmod(compassDegree, 360);
     return compassDegree;
 }

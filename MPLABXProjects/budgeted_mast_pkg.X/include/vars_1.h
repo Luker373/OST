@@ -17,32 +17,31 @@
 #define MAG_Y_NULL -0.9022
 #define MAG_Z_NULL 1.3509
 
-#define DELTA_T 10
 #define MOVING 20
 
 extern float radToDeg;
 extern float rollAvg, pitchAvg, compassAvg, rollSum, pitchSum, compassSum, magHeading, rawCompassHeading, alignedCompassHeading;
 extern float magXCorr, magYCorr, magZCorr;
-?
+
 extern float accel[3][1];
 extern float roll[MOVING];
 extern float pitch[MOVING];
 extern float compass[MOVING];
-?
-?
+
+
 extern float accelNullVec[3][1];
 
 extern float accelScale[3][3];
-?
+
 extern float accelReading[3][1];
 extern float accelVec[3][1];
 extern float accelVecScaled[3][1];
 extern float accelVecShifted[3][1];
-?
+
 extern float magNullVec[3][1];
-?
+
 extern float magScale[3][3];
-?
+
 extern float magReading[3][1];
 extern float magReadingAligned[3][1];
 extern float magVec[3][1];
