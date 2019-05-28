@@ -1,3 +1,7 @@
+# USEAGE: python gnost_to_matlab.py [-k,c] [files...]
+# -k: create kml file from data
+# -c: create raw coords file from data
+
 import sys
 import math
 from decimal import Decimal, DecimalException
@@ -135,32 +139,29 @@ for j in range(1, len(sys.argv)):
 
     f.close()
 
-    # convert from deg-minutes-seconds to decimal degrees
+    # ---------------ERRORS EXIST HERE----------------
     for x in range(0, len(gps_lat_arr)):
         if (Decimal(gps_lat_arr[x]) < 36) or (Decimal(gps_lat_arr[x]) > 37):
             gps_lat_handle(x)
+    for x in range(0, len(gps_long_arr)):
+        if gps_long_arr[x] > -122:
+            gps_long_handle(x)
+
+    # convert from deg-minutes-seconds to decimal degrees
+    for x in range(0, len(gps_lat_arr)):
         k = Decimal(gps_lat_arr[x])
         deg = math.floor(k)
         mins = math.floor((k-deg)*100)
         secs = math.floor((k-deg)*10000-mins*100)
         k = deg + (mins/60) + (secs/3600)
-        # if x == 5:
-        #     print(gps_lat_arr[x])
-        #     print("lat: %f + %f + %f = %f" % (deg, mins/60, secs/3600, k))
         gps_lat_arr[x] = k
 
     for x in range(0, len(gps_long_arr)):
-        if gps_long_arr[x] > -122:
-            gps_long_handle(x)
         k = Decimal(gps_long_arr[x])
         deg = math.ceil(k)
         mins = math.ceil((k-deg)*100)
         secs = math.ceil((k-deg)*10000-mins*100)
         k = deg + (mins/60) + (secs/3600)
-        # if x == 5:
-        #     print(gps_long_arr[x])
-        #     print("deg: %f mins: %f secs: %f" % (deg, mins, secs))
-        #     print("long: %f + %f + %f = %f" % (deg, mins/60, secs/3600, k))
         gps_long_arr[x] = k
 
     path = "matparse_" + sys.argv[j]
