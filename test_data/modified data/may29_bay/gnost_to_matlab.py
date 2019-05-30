@@ -147,6 +147,10 @@ for j in range(1, len(sys.argv)):
         if gps_long_arr[x] > -12100:
             gps_long_handle(x)
 
+    for x in range(0, len(compass_arr)):
+        if compass_arr[x] == 90 or compass_arr[x] == 0 or compass_arr[x] == 180 or compass_arr[x] == 270 or compass_arr[x] < 0 or compass_arr[x] >= 360 or compass_arr[x] == 145:
+            compass_handle(x)
+
     # convert from deg-minutes-seconds to decimal degrees
     for x in range(0, len(gps_lat_arr)):
         k = Decimal(gps_lat_arr[x])
