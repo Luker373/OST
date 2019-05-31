@@ -33,35 +33,46 @@ end
 trueWindHeading = mod((360 - (trueWindHeading - 90)), 360);
 
 %%%%
-num_wS = 20;
+num_wS = 25;
 base_wS = 1;
 range_wS = 0.5;
 disc_wind_s = zeros(1,num_wS);
 pos = zeros(1,num_wS);
 cor_boat_s = zeros(1,num_wS);
+sample_wS_mids = zeros(1,num_wS);
 %%%%
+
+avg_disc_wS = zeros(1, num_wS);
 
 for k = 1:num_wS   
     low = base_wS - range_wS;
     high = base_wS + range_wS;
+    sample_wS_mids(1,k) = base_wS;
 %     low = 10;
 %     high = 10.5;
+    sum = 0;
     j = 1;
     for i = 1:length(trueWindSpeed)
         if (trueWindSpeed(i) > low && trueWindSpeed(i) < high)
             disc_wind_s(j, k) = i;
+            sum = sum + trueWindSpeed(i);
             j = j+1;
         end
     end
-     base_wS = base_wS + range_wS;
+    avg_disc_wS(1,k) = sum/(j-1);
+    base_wS = base_wS + range_wS;
 end
+sample_wS_mids;
+
 % sz = size(disc_wind_s, 1)
 % nnz(disc_wind_s(:,1))
-for k = 1:num_wS
+
+
+for k = 1:num_wS    
     for j = 1:nnz(disc_wind_s(:,k))
        pos(j,k) = deg2rad(mod(trueWindHeading(disc_wind_s(j,k)) - track(disc_wind_s(j,k)), 360));
        corres_boat_s(j,k) = boatSpeed(disc_wind_s(j,k));       
-    end    
+    end
 end
 
 % figure(2)
@@ -74,7 +85,9 @@ end
 % pax.ThetaZeroLocation = 'top';
 % pax.FontSize = 12;
 % 
-for k = 1:num_wS
+
+% length(corres_boat_s(1,:))
+for k = 1:length(corres_boat_s(1,:))
     figure(1)
     subplot(5,5,k)
     polar(pos(:,k), corres_boat_s(:,k), 'r.')
@@ -82,40 +95,50 @@ for k = 1:num_wS
 end
 
 %sample trim of half the data
-sample = 12;
+sample = 7;
 pos2 = pos(:,sample);
 corres_boat_s_2 = corres_boat_s(:,sample);
 
 corres_boat_s_2(pos2 >= deg2rad(180)) = [];
 pos2(pos2 >= deg2rad(180)) = [];
-
-
-dTheta = 3;
+% for i=1:length(corres_boat_s_2)
+    
+dTheta = 10;
 k = 1;
 avg_cor_bS = zeros(1,180);
+avg_theta = zeros(1,180);
 
 for theta = 1:179
     j = 0;
     sum = 0;
+    theta_sum =  0;
     low = theta - dTheta;
     high = theta + dTheta;    
     for i = 1:length(pos2)
         cur_pos = rad2deg(pos2(i));
         if(cur_pos > low && cur_pos < high)
             sum = sum + corres_boat_s_2(i);
+            theta_sum = theta_sum + cur_pos;
             j = j + 1;
         end                        
     end
     k = k+1;
-    avg_cor_bS(1,k) = sum/j;    
+    avg_cor_bS(1,k) = sum/j;
+    avg_theta(1,k) = theta_sum/j;
 end
     phi = 1:180;
-    figure(2)
-    polar(pos2, corres_boat_s_2, 'g.')
-    hold on
-    polar(deg2rad(phi), avg_cor_bS(1,:), 'r.')
+    figure(9)    
+%     polar(pos2, corres_boat_s_2, 'g.')
+%     hold on
+%     polar(deg2rad(phi), avg_cor_bS(1,:), 'k.')
+    polar(deg2rad(avg_theta(1,:)), avg_cor_bS(1,:), 'k.')
     view([90 -90])
-    title('Point of Sail vs Boat Speed for 10knt Wind Speed')
+%     title('Point of Sail vs Boat Speed')
+grid on
+hold on
 
-mean(trueWindHeading)
-mean(trueWindSpeed)
+curr_polar_wS = avg_disc_wS(1,sample)
+avg_TW_heading = mean(trueWindHeading)
+avg_TW_speed = mean(trueWindSpeed)
+
+clear corres_boat_s
