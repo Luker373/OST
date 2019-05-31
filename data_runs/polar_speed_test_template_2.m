@@ -33,7 +33,7 @@ end
 trueWindHeading = mod((360 - (trueWindHeading - 90)), 360);
 
 %%%%
-num_wS = 25;
+num_wS = 20;
 base_wS = 1;
 range_wS = 0.5;
 disc_wind_s = zeros(1,num_wS);
@@ -74,22 +74,23 @@ end
 % pax.ThetaZeroLocation = 'top';
 % pax.FontSize = 12;
 % 
-% for k = 1:num_wS
-%     figure(1)
-%     subplot(5,5,k)
-%     polar(pos(:,k), corres_boat_s(:,k), 'r.')
-%     view([90 -90])
-% end
+for k = 1:num_wS
+    figure(1)
+    subplot(5,5,k)
+    polar(pos(:,k), corres_boat_s(:,k), 'r.')
+    view([90 -90])
+end
 
 %sample trim of half the data
-pos2 = pos(:,20);
-corres_boat_s_2 = corres_boat_s(:,20);
+sample = 12;
+pos2 = pos(:,sample);
+corres_boat_s_2 = corres_boat_s(:,sample);
 
 corres_boat_s_2(pos2 >= deg2rad(180)) = [];
 pos2(pos2 >= deg2rad(180)) = [];
 
 
-dTheta = 10;
+dTheta = 3;
 k = 1;
 avg_cor_bS = zeros(1,180);
 
@@ -110,7 +111,7 @@ for theta = 1:179
 end
     phi = 1:180;
     figure(2)
-    polar(pos2, corres_boat_s_2, 'y.')
+    polar(pos2, corres_boat_s_2, 'g.')
     hold on
     polar(deg2rad(phi), avg_cor_bS(1,:), 'r.')
     view([90 -90])

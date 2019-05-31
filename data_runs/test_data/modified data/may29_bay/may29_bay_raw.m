@@ -358283,3 +358283,9 @@ compass_deg = [213
 178
 178
 ];
+
+
+%x = j:i:k 
+timeStamp = [0:1:length(boatSpeed)-1]';
+%timeSec = [0:1/12:length(boatSpeed)/12-1/12]';
+timeMinutes = [0:12*60:length(boatSpeed)]';
