@@ -114,6 +114,7 @@ end
     hold on
     polar(deg2rad(phi), avg_cor_bS(1,:), 'r.')
     view([90 -90])
+    title('Point of Sail vs Boat Speed for 10knt Wind Speed')
 
 mean(trueWindHeading)
 mean(trueWindSpeed)
