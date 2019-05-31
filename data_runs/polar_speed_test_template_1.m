@@ -1,0 +1,203 @@
+windSpeed = filloutliers(windSpeed, 'nearest');
+windDeg = filloutliers(windDeg, 'nearest');
+
+boatWindX = boatSpeed .* sin(track * 3.1415/180);
+boatWindY = boatSpeed .* cos(track * 3.1415/180);
+
+appWindHeading = mod((track + windDeg), 360);
+appWindX = windSpeed .* sin(appWindHeading * 3.1415/180);
+appWindY = windSpeed .* cos(appWindHeading * 3.1415/180);
+appWind = [appWindX, appWindY];
+appWindSpeed = zeros(length(boatSpeed),1);
+for c = 1:length(appWind)
+    %appWindSpeed(c, 1) = norm(appWind(c)); %norm fcn doesnt work?
+    appWindSpeed(c) = sqrt(appWind(c,1)^2 + appWind(c,2)^2);
+end
+
+trueWindX = appWindX - boatWindX;
+trueWindY = appWindY - boatWindY;
+trueWind = [trueWindX, trueWindY];
+trueWindSpeed = zeros(length(boatSpeed),1);
+for c = 1:length(boatSpeed)
+    trueWindSpeed(c) = sqrt(trueWind(c,1)^2 + trueWind(c,2)^2);
+    %trueWindSpeed(c, 1) = norm(trueWind(c)); %norm fcn doesnt work?
+end
+
+trueWindSpeed = filloutliers(trueWindSpeed, 'previous');
+trueWindHeading = atan2(trueWindY, trueWindX)*180/3.1415;
+
+if (trueWindX < 0)
+    trueWindHeading = trueWindHeading + 180;
+end
+
+trueWindHeading = mod((360 - (trueWindHeading - 90)), 360);
+
+%%%%
+num_wS = 25;
+base_wS = 1;
+range_wS = 0.5;
+disc_wind_s = zeros(1,num_wS);
+pos = zeros(1,num_wS);
+cor_boat_s = zeros(1,num_wS);
+%%%%
+
+for k = 1:num_wS   
+    low = base_wS - range_wS;
+    high = base_wS + range_wS;
+%     low = 10;
+%     high = 10.5;
+    j = 1;
+    for i = 1:length(trueWindSpeed)
+        if (trueWindSpeed(i) > low && trueWindSpeed(i) < high)
+            disc_wind_s(j, k) = i;
+            j = j+1;
+        end
+    end
+     base_wS = base_wS + range_wS;
+end
+% sz = size(disc_wind_s, 1)
+% nnz(disc_wind_s(:,1))
+% 
+for k = 1:num_wS
+    for j = 1:nnz(disc_wind_s(:,k))
+       pos(j,k) = deg2rad(mod(trueWindHeading(disc_wind_s(j,k)) - track(disc_wind_s(j,k)), 360));
+       corres_boat_s(j,k) = boatSpeed(disc_wind_s(j,k));       
+    end    
+end
+
+% figure(2)
+% pax = polaraxes;
+% theta = 0:0.01:2*pi;
+% rho = sin(2*theta).*cos(2*theta);
+% polarplot(theta,rho)
+% 
+% POLAR AXES PACKAGE NOT WORKING
+% pax.ThetaDir = 'clockwise';
+% pax.ThetaZeroLocation = 'top';
+% pax.FontSize = 12;
+
+for k = 1:num_wS
+    figure(1)
+    subplot(5,5,k)
+    polar(pos(:,k), corres_boat_s(:,k), 'r.')
+    view([90 -90])
+
+%     polaraxes.ThetaZeroLocation = 'top';
+% %     pax.ThetaDir = 'clockwise';
+% %     pax.ThetaZeroLocation = 'top';
+end
+
+hold on
+
+%sample trim of half the data
+pos2 = pos(:,20);
+corres_boat_s_2 = corres_boat_s(:,20);
+
+corres_boat_s_2(pos2 >= deg2rad(180)) = [];
+pos2(pos2 >= deg2rad(180)) = [];
+
+figure(2)
+polar(pos2, corres_boat_s_2, 'b.')
+
+dTheta = 10;
+k = 1;
+avg_cor_bS = zeros(1,180);
+for theta = 1:179
+    j = 0;
+    sum = 0;
+    low = theta - dTheta;
+    high = theta + dTheta;    
+    for i = 1:length(pos2)
+        cur_pos = rad2deg(pos2(i));
+        if(cur_pos > low && cur_pos < high)
+            sum = sum + corres_boat_s_2(i);
+            j = j + 1;
+        end                        
+    end
+%     figure(60)
+%     polar(deg2rad(theta), sum/j);
+%     hold on
+    k = k+1;
+    avg_cor_bS(1,k) = sum/j;    
+end
+    phi = 1:180;
+    figure(3)
+    pax = polaraxes;
+%     polaraxes(pax);
+%     polaraxes(ThetaDir,clockwise);
+%     pax.ThetaZeroLocation = 'top';
+    polar(pos2, corres_boat_s_2, 'y.')
+    hold on
+    polar(deg2rad(phi), avg_cor_bS(1,:), 'r.')
+    view([90 -90])
+
+    
+%     pax.ThetaDir = 'clockwise';
+%     pax.ThetaZeroLocation = 'top';
+
+%     ax = gca;
+% d = ax.ThetaDir;
+% ax.ThetaDir = 'clockwise';
+    
+
+
+pos2_left = pos2;
+pos2_right = pos2;
+cor_left = corres_boat_s_2;
+cor_right = corres_boat_s_2;
+
+
+cor_left(pos2_left <= deg2rad(90)) = [];
+pos2_left(pos2_left <= deg2rad(90)) = [];
+cor_right(pos2_right >= deg2rad(90)) = [];
+pos2_right(pos2_right >= deg2rad(90)) = [];
+
+figure(4)
+polar(pos2_left, cor_left, 'b.')
+hold on
+polar(pos2_right, cor_right, 'r.')
+
+[xL,yL] = pol2cart(pos2_left, cor_left);
+[xR,yR] = pol2cart(pos2_right, cor_right);
+
+
+%  half_corres_boat_s = corres_boat_s;
+%  half_pos = pos;
+%  for k = 1:num_wS
+%      half_corres_boat_s(:,k)(half_pos(:,k)>= deg2rad(180)) = [];
+%      half_pos(:,k)(half_pos(:,k) >= deg2rad(180)) = [];
+%  end
+
+%test = mod(-350, 360)
+
+% 
+%  pos2 = pos(:,4);
+%  pos2(pos2 <= 0) = [];
+% 
+%  % change polar to Cartesian 
+%   [x,y] = pol2cart(pos2, corres_boat_s(:,4), '.') ;
+%  
+% 
+%   x(y <= 0) = [];
+%   y(y <= 0) = [];
+%   
+%   
+%    %%fit line in Cartesian coordinates
+%   P = polyfit(x,y,100);
+%   yfit = P(1)*x+P(2);
+%   
+%   figure
+%   plot(x,y,'.r')
+%   hold on;
+%   plot(x,yfit,'b');
+%   %%Change fit coordinates to polar
+%   [thetafit,rhofit] = cart2pol(x,yfit) ;
+%   figure
+%   polar(pos(:,4), corres_boat_s(:,4), '.');
+%   ax=gca ;
+%   %ax.ThetaZeroLocation = 'left' ;
+%   hold on
+%   polar(thetafit, rhofit,'r') ;
+% 
+mean(trueWindHeading)
+mean(trueWindSpeed)
