@@ -18,8 +18,11 @@ for j in range(1, len(sys.argv)):
     idx = 0
     for line in f:
         lineDict[idx] = line.split(",")
-        gps_lat_arr[idx] = Decimal(lineDict[idx][0])
-        gps_long_arr[idx] = Decimal(lineDict[idx][1])
+        try:
+            gps_lat_arr[idx] = Decimal(lineDict[idx][0])
+            gps_long_arr[idx] = Decimal(lineDict[idx][1])
+        except DecimalException as f:
+            continue
         idx = idx+1
 
     plt.plot(gps_long_arr, gps_lat_arr);

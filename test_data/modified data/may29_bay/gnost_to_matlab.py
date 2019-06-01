@@ -152,27 +152,29 @@ for j in range(1, len(sys.argv)):
     #         compass_handle(x)
 
     # convert from deg-minutes-seconds to decimal degrees
+    rollbk = 0
     for x in range(0, len(gps_lat_arr)):
-        deg = 10*int(gps_lat_arr[x][0]) + int(gps_lat_arr[x][1])
-        mins = 10*int(gps_lat_arr[x][2]) + int(gps_lat_arr[x][3])
-        mins = mins + (1/10)*int(gps_lat_arr[x][5]) + (1/100)*int(gps_lat_arr[x][6]) + (1/1000)*int(gps_lat_arr[x][7])
-        #k = Decimal(gps_lat_arr[x])/100
-        # deg = math.floor(k/100)
-        # mins = math.floor((k-deg*100))
-        # secs = math.floor(((k-deg*100)-mins)*100)
+        try:
+            deg = 10*int(gps_lat_arr[x][0]) + int(gps_lat_arr[x][1])
+            mins = 10*int(gps_lat_arr[x][2]) + int(gps_lat_arr[x][3])
+            mins = mins + (1/10)*int(gps_lat_arr[x][5]) + (1/100)*int(gps_lat_arr[x][6]) + (1/1000)*int(gps_lat_arr[x][7])
+        except:
+            rollbk = rollbk + 1
+            continue
         k = deg + (mins/60)
-        gps_lat_arr[x] = k
+        gps_lat_arr[x-rollbk] = k
 
+    rollbk = 0
     for x in range(0, len(gps_long_arr)):
-        deg = (100*int(gps_long_arr[x][1]) + 10*int(gps_long_arr[x][2]) + int(gps_long_arr[x][3]))
-        mins = 10*int(gps_long_arr[x][4]) + int(gps_long_arr[x][5])
-        mins = mins + (1/10)*int(gps_long_arr[x][7]) + (1/100)*int(gps_long_arr[x][8]) + (1/1000)*int(gps_long_arr[x][9])
-        #k = Decimal(gps_long_arr[x])/100
-        #deg = math.floor(k/100)
-        # mins = math.floor((k-deg*100))
-        # secs = math.floor(((k-deg*100)-mins)*100)
+        try:
+            deg = (100*int(gps_long_arr[x][1]) + 10*int(gps_long_arr[x][2]) + int(gps_long_arr[x][3]))
+            mins = 10*int(gps_long_arr[x][4]) + int(gps_long_arr[x][5])
+            mins = mins + (1/10)*int(gps_long_arr[x][7]) + (1/100)*int(gps_long_arr[x][8]) + (1/1000)*int(gps_long_arr[x][9])
+        except:
+            rollbk = rollbk + 1
+            continue
         k = -1*deg - (mins/60)
-        gps_long_arr[x] = k
+        gps_long_arr[x-rollbk] = k
 
     path = "matparse_" + sys.argv[j]
     f = open(path, "w+")
