@@ -59,7 +59,7 @@ def compass_handle(x):
     y = x - 1
     while compass_arr[y] == 0:
         y = y - 1
-    print('compass_arr[%d]: REPLACED %f WITH: %f' % (x, compass_arr[x], compass_arr[y]))
+    #print('compass_arr[%d]: REPLACED %f WITH: %f' % (x, compass_arr[x], compass_arr[y]))
     compass_arr[x] = compass_arr[y]
 
 def timestamp_handle(x):
