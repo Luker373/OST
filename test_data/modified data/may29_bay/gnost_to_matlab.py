@@ -103,8 +103,8 @@ for j in range(1, len(sys.argv)):
     timstamp_arr = [0] * (i + 1)
     boom_ang_arr = [0] * (i + 1)
     compass_arr = [0] * (i + 1)
-    gps_lat_arr = [0] * (i + 1)
-    gps_long_arr = [0] * (i + 1)
+    gps_lat_arr = ["" for x in range(i+1)]
+    gps_long_arr = ["" for x in range(i+1)]
 
     lineDict = {}
 
@@ -115,9 +115,9 @@ for j in range(1, len(sys.argv)):
 
         q = 0
         try:
-            gps_lat_arr[idx] = Decimal(lineDict[idx][2])
+            gps_lat_arr[idx] = str(lineDict[idx][2])
             q = q + 1
-            gps_long_arr[idx] = Decimal(lineDict[idx][3])
+            gps_long_arr[idx] = str(lineDict[idx][3])
             q = q + 1
             wind_s_arr[idx] = Decimal(lineDict[idx][4])
             q = q + 1
@@ -140,32 +140,38 @@ for j in range(1, len(sys.argv)):
     f.close()
 
     # ---------------ERRORS EXIST HERE----------------
-    for x in range(0, len(gps_lat_arr)):
-        if (Decimal(gps_lat_arr[x]) < 3600) or (Decimal(gps_lat_arr[x]) > 3700):
-            gps_lat_handle(x)
-    for x in range(0, len(gps_long_arr)):
-        if gps_long_arr[x] > -12100:
-            gps_long_handle(x)
+    # for x in range(0, len(gps_lat_arr)):
+    #     if (Decimal(gps_lat_arr[x]) < 3600) or (Decimal(gps_lat_arr[x]) > 3700):
+    #         gps_lat_handle(x)
+    # for x in range(0, len(gps_long_arr)):
+    #     if gps_long_arr[x] > -12100:
+    #         gps_long_handle(x)
 
-    for x in range(0, len(compass_arr)):
-        if compass_arr[x] == 90 or compass_arr[x] == 0 or compass_arr[x] == 180 or compass_arr[x] == 270 or compass_arr[x] < 0 or compass_arr[x] >= 360 or compass_arr[x] == 145:
-            compass_handle(x)
+    # for x in range(0, len(compass_arr)):
+    #     if compass_arr[x] == 90 or compass_arr[x] == 0 or compass_arr[x] == 180 or compass_arr[x] == 270 or compass_arr[x] < 0 or compass_arr[x] >= 360 or compass_arr[x] == 145:
+    #         compass_handle(x)
 
     # convert from deg-minutes-seconds to decimal degrees
     for x in range(0, len(gps_lat_arr)):
-        k = Decimal(gps_lat_arr[x])
-        deg = math.floor(k/100)
-        mins = math.floor((k-deg*100))
-        secs = math.floor(((k-deg*100)-mins)*100)
-        k = deg + (mins/60) + (secs/3600)
+        deg = 10*int(gps_lat_arr[x][0]) + int(gps_lat_arr[x][1])
+        mins = 10*int(gps_lat_arr[x][2]) + int(gps_lat_arr[x][3])
+        mins = mins + (1/10)*int(gps_lat_arr[x][5]) + (1/100)*int(gps_lat_arr[x][6]) + (1/1000)*int(gps_lat_arr[x][7])
+        #k = Decimal(gps_lat_arr[x])/100
+        # deg = math.floor(k/100)
+        # mins = math.floor((k-deg*100))
+        # secs = math.floor(((k-deg*100)-mins)*100)
+        k = deg + (mins/60)
         gps_lat_arr[x] = k
 
     for x in range(0, len(gps_long_arr)):
-        k = Decimal(gps_long_arr[x])
-        deg = math.ceil(k/100)
-        mins = math.ceil((k-deg*100))
-        secs = math.ceil(((k-deg*100)-mins)*100)
-        k = deg + (mins/60) + (secs/3600)
+        deg = (100*int(gps_long_arr[x][1]) + 10*int(gps_long_arr[x][2]) + int(gps_long_arr[x][3]))
+        mins = 10*int(gps_long_arr[x][4]) + int(gps_long_arr[x][5])
+        mins = mins + (1/10)*int(gps_long_arr[x][7]) + (1/100)*int(gps_long_arr[x][8]) + (1/1000)*int(gps_long_arr[x][9])
+        #k = Decimal(gps_long_arr[x])/100
+        #deg = math.floor(k/100)
+        # mins = math.floor((k-deg*100))
+        # secs = math.floor(((k-deg*100)-mins)*100)
+        k = -1*deg - (mins/60)
         gps_long_arr[x] = k
 
     path = "matparse_" + sys.argv[j]
