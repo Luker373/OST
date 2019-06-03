@@ -8,16 +8,13 @@ numIgnore = 2; % num seconds to ignore after deltaThresh occurs
 % copying vars each time prevents having to re-run data files between tests
 track2 = track;
 windDeg2 = windDeg;
-% windSpeed2 = filloutliers(windSpeed, 'nearest');
-% boatSpeed2 = filloutliers(boatSpeed, 'nearest');
-% compass_deg2 = filloutliers(compass_deg, 'nearest');
-% compass_deg2 = movmean(compass_deg2, 20);
+windSpeed2 = filloutliers(windSpeed, 'nearest');
+boatSpeed2 = filloutliers(boatSpeed, 'nearest');
+compass_deg2 = filloutliers(compass_deg, 'nearest');
+compass_deg2 = movmean(compass_deg2, 20);
 
 % windSpeed2 = movmean(windSpeed2, [99 0]);
 % windDeg2 = movmean(windDeg2, [9 0]);
-
-% boatSpeed2 = movmean(boatSpeed2, [99 0]);
-% windSpeed2 = movmean(windSpeed2, [99 0]);
 
 if toggleFilter == 1
     dataPtsPerSec = 4;
@@ -43,30 +40,20 @@ end
 %     timeStamp(c) = 60*(floor(ts_gnost(c)/100) - floor(ts_gnost(1)/100)) + mod(ts_gnost(c),60) - mod(ts_gnost(1),60);
 % end
 
-% boatWindX = boatSpeed2 .* sin(track2 * 3.1415/180);
-% boatWindY = boatSpeed2 .* cos(track2 * 3.1415/180);
-boatWindX = boatSpeed .* sin(track2 * 3.1415/180);
-boatWindY = boatSpeed .* cos(track2 * 3.1415/180);
+boatWindX = boatSpeed2 .* sin(track2 * 3.1415/180);
+boatWindY = boatSpeed2 .* cos(track2 * 3.1415/180);
 
 appWindHeading = mod((track2 + windDeg2), 360);
 
 % noise reduction
 % coeff = ones(1, 50)/50;
 % appWindHeadingMvMean = filter(coeff, 1, appWindHeading);
- 
-% appWindX = windSpeed2 .* sin(appWindHeading * 3.1415/180);
-% appWindY = windSpeed2 .* cos(appWindHeading * 3.1415/180);
-appWindX = windSpeed .* sin(appWindHeading * 3.1415/180);
-appWindY = windSpeed .* cos(appWindHeading * 3.1415/180);
 
+appWindX = windSpeed2 .* sin(appWindHeading * 3.1415/180);
+appWindY = windSpeed2 .* cos(appWindHeading * 3.1415/180);
 appWind = [appWindX, appWindY];
 
-% appWindX = windSpeed2 .* sin(appWindHeading * 3.1415/180);
-% appWindY = windSpeed2 .* cos(appWindHeading * 3.1415/180);
-
-appWindX = windSpeed .* sin(appWindHeading * 3.1415/180);
-appWindY = windSpeed .* cos(appWindHeading * 3.1415/180);
-
+appWindSpeed = zeros(length(boatSpeed2),1);
 for c = 1:length(appWind)
     appWindSpeed(c) = sqrt(appWind(c,1)^2 + appWind(c,2)^2);
 end
@@ -74,16 +61,13 @@ end
 trueWindX = appWindX - boatWindX;
 trueWindY = appWindY - boatWindY;
 trueWind = [trueWindX, trueWindY];
-% trueWindSpeed = zeros(length(boatSpeed2),1);
-trueWindSpeed = zeros(length(boatSpeed),1);
+trueWindSpeed = zeros(length(boatSpeed2),1);
 
-
-% for c = 1:length(boatSpeed2)
-for c = 1:length(boatSpeed)
+for c = 1:length(boatSpeed2)
     trueWindSpeed(c) = sqrt(trueWind(c,1)^2 + trueWind(c,2)^2);
 end
 
-% trueWindSpeed = filloutliers(trueWindSpeed, 'previous');
+trueWindSpeed = filloutliers(trueWindSpeed, 'previous');
 trueWindHeading = atan2(trueWindY, trueWindX)*180/3.1415;
 
 if (trueWindX < 0)
@@ -180,68 +164,68 @@ disp(mean(trueWindHeading));
 % title('Anemometer Wind Speed and Heading')
 
 %speed data
-figure(1)
-subplot(3,1,1)
-plot(timeStamp, boatSpeed);
-grid on
-xticks(0:11*60*5:length(appWindHeading));
-xticklabels([0:5:length(appWindHeading)/11*60*5]);
-xlabel('Time [minutes]')
-ylabel('Speed [kn]')
-title('Boat Wind Speed')
-% 
-subplot(3,1,2)
-plot(timeStamp, trueWindSpeed);
-grid on
-xticks(0:11*60*5:length(appWindHeading));
-xticklabels([0:5:length(appWindHeading)/11*60*5]);
-xlabel('Time [minutes]')
-ylabel('Speed [kn]')
-title('True Wind Speed')
-% 
-subplot(3,1,3)
-plot(timeStamp, appWindSpeed);
-grid on
-xticks(0:11*60*5:length(appWindHeading));
-xticklabels([0:5:length(appWindHeading)/11*60*5]);
-xlabel('Time [minutes]')
-ylabel('Speed [kn]')
-title('App Wind Speed')
+% figure(1)
+% subplot(3,1,1)
+% plot(timeStamp, boatSpeed2);
+% grid on
+% xticks(0:11*60*5:length(appWindHeading));
+% xticklabels([0:5:length(appWindHeading)/11*60*5]);
+% xlabel('Time [minutes]')
+% ylabel('Speed [kn]')
+% title('Boat Wind Speed')
+% % 
+% subplot(3,1,2)
+% plot(timeStamp, trueWindSpeed);
+% grid on
+% xticks(0:11*60*5:length(appWindHeading));
+% xticklabels([0:5:length(appWindHeading)/11*60*5]);
+% xlabel('Time [minutes]')
+% ylabel('Speed [kn]')
+% title('True Wind Speed')
+% % 
+% subplot(3,1,3)
+% plot(timeStamp, appWindSpeed);
+% grid on
+% xticks(0:11*60*5:length(appWindHeading));
+% xticklabels([0:5:length(appWindHeading)/11*60*5]);
+% xlabel('Time [minutes]')
+% ylabel('Speed [kn]')
+% title('App Wind Speed')
 
 %Heading data
 figure(2)
 subplot(3,1,1)
-plot(timeStamp, track);
+plot(timeStamp(15000:40000), track2(15000:40000));
 grid on
-xticks(0:11*60*5:length(appWindHeading));
-xticklabels([0:5:length(appWindHeading)/11*60*5]);
+xticks(0:11*60*5:length(appWindHeading(15000:40000)));
+xticklabels([0:5:length(appWindHeading(15000:40000))/11*60*5]);
 xlabel('Time [minutes]')
 ylabel('Heading [deg]')
 title('Boat Wind Heading')
 
 subplot(3,1,2)
-plot(timeStamp, trueWindHeading);
+plot(timeStamp(15000:40000), trueWindHeading(15000:40000));
 grid on
-xticks(0:11*60*5:length(appWindHeading));
-xticklabels([0:5:length(appWindHeading)/11*60*5]);
+xticks(0:11*60*5:length(appWindHeading(15000:40000)));
+xticklabels([0:5:length(appWindHeading(15000:40000))/11*60*5]);
 xlabel('Time [minutes]')
 ylabel('Heading [deg]')
 title('True Wind Heading')
 
 subplot(3,1,3)
-plot(timeStamp, appWindHeading);
+plot(timeStamp(15000:40000), appWindHeading(15000:40000));
 grid on
-xticks(0:11*60*5:length(appWindHeading));
-xticklabels([0:5:length(appWindHeading)/11*60*5]);
+xticks(0:11*60*5:length(appWindHeading(15000:40000)));
+xticklabels([0:5:length(appWindHeading(15000:40000))/11*60*5]);
 xlabel('Time [minutes]')
 ylabel('Heading [deg]')
 title('App Wind Heading')
 
 figure(3)
 subplot(2,1,1)
-plot(timeStamp, track);
+plot(timeStamp, track2);
 hold on
-plot(timeStamp, compass_deg);
+plot(timeStamp, compass_deg2);
 hold off
 grid on
 xticks(0:11*60*5:length(appWindHeading));
@@ -252,7 +236,7 @@ title('GPS Heading v Time')
 
 figure(3)
 subplot(2,1,2)
-plot(timeStamp, compass_deg);
+plot(timeStamp, compass_deg2);
 grid on
 xticks(0:11*60*5:length(appWindHeading));
 xticklabels([0:5:length(appWindHeading)/11*60*5]);

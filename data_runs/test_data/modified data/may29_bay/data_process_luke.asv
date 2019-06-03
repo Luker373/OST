@@ -78,12 +78,11 @@ trueWind = [trueWindX, trueWindY];
 trueWindSpeed = zeros(length(boatSpeed),1);
 
 
-% for c = 1:length(boatSpeed2)
-for c = 1:length(boatSpeed)
+for c = 1:length(boatSpeed2)
     trueWindSpeed(c) = sqrt(trueWind(c,1)^2 + trueWind(c,2)^2);
 end
 
-% trueWindSpeed = filloutliers(trueWindSpeed, 'previous');
+trueWindSpeed = filloutliers(trueWindSpeed, 'previous');
 trueWindHeading = atan2(trueWindY, trueWindX)*180/3.1415;
 
 if (trueWindX < 0)
@@ -182,7 +181,7 @@ disp(mean(trueWindHeading));
 %speed data
 figure(1)
 subplot(3,1,1)
-plot(timeStamp, boatSpeed);
+plot(timeStamp, boatSpeed2);
 grid on
 xticks(0:11*60*5:length(appWindHeading));
 xticklabels([0:5:length(appWindHeading)/11*60*5]);
@@ -211,7 +210,7 @@ title('App Wind Speed')
 %Heading data
 figure(2)
 subplot(3,1,1)
-plot(timeStamp, track);
+plot(timeStamp, track2);
 grid on
 xticks(0:11*60*5:length(appWindHeading));
 xticklabels([0:5:length(appWindHeading)/11*60*5]);
@@ -239,9 +238,9 @@ title('App Wind Heading')
 
 figure(3)
 subplot(2,1,1)
-plot(timeStamp, track);
+plot(timeStamp, track2);
 hold on
-plot(timeStamp, compass_deg);
+plot(timeStamp, compass_deg2);
 hold off
 grid on
 xticks(0:11*60*5:length(appWindHeading));
@@ -252,7 +251,7 @@ title('GPS Heading v Time')
 
 figure(3)
 subplot(2,1,2)
-plot(timeStamp, compass_deg);
+plot(timeStamp, compass_deg2);
 grid on
 xticks(0:11*60*5:length(appWindHeading));
 xticklabels([0:5:length(appWindHeading)/11*60*5]);
