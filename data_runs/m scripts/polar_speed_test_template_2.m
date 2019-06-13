@@ -105,13 +105,14 @@ end
 
 
 %sample trim of half the data
-sample = 12;
+sample = 7;
 pos2 = pos(:,sample);
 corres_boat_s_2 = corres_boat_s(:,sample);
 
 corres_boat_s_2(pos2 >= deg2rad(180)) = [];
 pos2(pos2 >= deg2rad(180)) = [];
-% for i=1:length(corres_boat_s_2)
+
+
     
 dTheta = 10;
 k = 1;
@@ -138,14 +139,28 @@ for theta = 1:179
 end
     phi = 1:180;
     figure(5)    
-%     polar(pos2, corres_boat_s_2, 'g.')
-%     hold on
+    polar(pos2, corres_boat_s_2, 'r.')
+    hold on
 %     polar(deg2rad(phi), avg_cor_bS(1,:), 'k.')
-    polar(deg2rad(avg_theta(1,:)), avg_cor_bS(1,:), 'c.')
+    polar(deg2rad(avg_theta(1,:)), avg_cor_bS(1,:), 'b.')
     view([90 -90])
 %     title('Point of Sail vs Boat Speed')
 grid on
 hold on
+
+vmg = zeros(1, 180)
+for i = 1:length(avg_cor_bS)
+    vmg(1, i) = avg_cor_bS(1,i) * cos(deg2rad(avg_theta(1,i)));
+end
+
+[vmgUP, vmgUP_indx] = max(vmg)
+vmgUP_theta = avg_theta(vmgUP_indx)
+
+[vmgDOWN, vmgDOWN_indx] = min(vmg)
+vmgDOWN_theta = avg_theta(vmgDOWN_indx)
+
+[max_SOG, max_SOG_indx] = max(avg_cor_bS)
+max_SOG_pos = avg_theta(max_SOG_indx)
 
 curr_polar_wS = avg_disc_wS(1,sample)
 avg_TW_heading = mean(trueWindHeading)
