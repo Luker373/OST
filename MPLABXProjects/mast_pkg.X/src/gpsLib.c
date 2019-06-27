@@ -1,16 +1,20 @@
 #include "gpsLib.h"
+#include "serial.h"
 #include <stdlib.h>
 #include <math.h>
 
 #define WINDOW_SIZE 30
 #define WINDOW_SUM (WINDOW_SIZE)*(WINDOW_SIZE+1)/2
 
-float longitude=0, latitude=0, alt=0, speed=0;
+static char longitude[20] = "-1";
+static char latitude[20] = "-1";
+//float longitude= 0, latitude= 0;
+float alt= 0, speed= 0;
 float freq = 0, windDegree = 0, windSpeed = 0, track = 45;
 int boomAngle = 0;
 int time[3];
 int satellites=0, fix=0;
-int i = 0, startup = 1;
+int i = 0, startup = 1, bad_ct = 20;
 char msg[79];
 char tempMsg[79];
 char printmsg[200];
@@ -29,13 +33,23 @@ int compassDarr[WINDOW_SIZE];
 float compassDegree;
 
 void processSentence(char *str){
+    
     strcpy(tempMsg, str);
     
     int cs = checkCS(tempMsg);
     
-    if(cs == 1){
+    if(cs == 1){ 
         char *tok = strtok(str, ",");
         if(!strcmp(tok, "$GNGGA")){
+            if(str[7] == ','){
+                bad_ct++;
+                if(bad_ct > 20){
+                    strcpy(latitude, "-1");
+                    strcpy(longitude, "-1");
+                }
+                return;
+            }
+            bad_ct = 0;
             processGGA(str);
         }
         else if(!strcmp(tok, "$GNGSA")){
@@ -121,7 +135,7 @@ void createGNOST(char *str){
         char buffer[10];
         char out[80];
         
-        sprintf(out, "$GNOST,%d,%.4f,%.4f,%.2f,%.2f,%.2f,%.2f,%.2f,%.0f,",-1, getLat()/100, getLong()/100, getWindSpeed(),getWindDegree(), getSpeed(),track,getBoomAngle(),getCompassDegree());
+        sprintf(out, "$GNOST,%d,%s,%s,%.2f,%.2f,%.2f,%.2f,%.2f,%.0f,",1, latitude, longitude, getWindSpeed(),getWindDegree(), getSpeed(),track,getBoomAngle(),getCompassDegree());
 
 //        sprintf(out, "$GNOST,%d,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f,", -1, getLat()/100, getLong()/100, getWindSpeed(),getWindDegree(),-1.0,getBoomAngle());
         if(getHour() < 10)
@@ -240,6 +254,7 @@ int checkCS(char *str){
 
 // $GNGGA,225221.00,3658.85898,N,12201.65720,W,2,08,1.43,-16.8,M,-30.6,M,,0000*69
 void processGGA(char *str){
+    
 	char *tok = strtok(NULL, ",");
 	// tok = time of fix taken
     if(tok != NULL){
@@ -254,23 +269,42 @@ void processGGA(char *str){
 	tok = strtok(NULL, ",");
 	// tok = latitude
     if(tok != NULL){
-      latitude = atof(tok);
+        if(atof(tok) == 0) return;
+        strcpy(latitude, tok);
+      //latitude = atof(tok);
     }
         
     tok = strtok(NULL, ",");
 	// tok = N or S
-	if(tok != NULL && !strcmp(tok, "S"))
-          latitude *= -1;
+	if(tok != NULL && !strcmp(tok, "S")){
+        char t[20] = "-";
+        strcat(t, latitude);
+        strcpy(latitude, t);
+        //latitude *= -1;
+    }
 
 	tok = strtok(NULL, ",");
 	// tok = longitude
-    if(tok != NULL)
-        longitude = atof(tok);
+    if(tok != NULL){
+        char test[20] = "tok";
+        //sprintf(longitude, "%d", atof(tok));
+        if(atof(tok) == 99.99) return;
+        strcpy(longitude, tok);
+        //longitude = atof(tok);
+//        int i = 0;
+//        for(i; i < strlen(tok); ++i){
+//            PutChar(2, tok[i]);
+//        }
+    }
 
     tok = strtok(NULL, ",");
 	// tok = N or S
-	if(tok != NULL && !strcmp(tok, "W"))
-        longitude *= -1;
+	if(tok != NULL && !strcmp(tok, "W")){
+        char t[20] = "-";
+        strcat(t, longitude);
+        strcpy(longitude, t);
+        //longitude *= -1;
+    }
 
 	tok = strtok(NULL, ",");
 	// tok = fix quality
@@ -289,6 +323,8 @@ void processGGA(char *str){
 	// tok = altitude above mean sea level
     if(tok != NULL)
         alt = atof(tok);
+    
+    tok = strtok(NULL, ",");
 }
 
 // $GNOST, (filtered), (lat), (long), (wind speed), (wind dir), (speed), (heading), (boom angle), (timestamp), *(checksum) <LF>
@@ -298,11 +334,13 @@ void processGNOST(char *str){
     
     tok = strtok(NULL, ",");
     // tok = lat
-    latitude = atof(tok);
+    strcpy(latitude, tok);
+    //latitude = atof(tok);
             
     tok = strtok(NULL, ",");
     // tok = long
-    longitude = atof(tok);
+    strcpy(longitude, tok);
+    //longitude = atof(tok);
     
     tok = strtok(NULL, ",");
     // tok = wind speed
@@ -381,10 +419,9 @@ void processRMC(char *str){
 void setWindSpeed(float f){
     if (f > 100)
         f = 0;
-    f = (int)f;
     windSupdated = 1;
     windSidx = windSidx % WINDOW_SIZE;
-    windSsum += (f*1000*WINDOW_SIZE);
+    windSsum += (int)(f*1000*WINDOW_SIZE);
     for(i =0; i < WINDOW_SIZE; ++i){
         windSsum -= windSarr[i];
     }
@@ -446,11 +483,11 @@ float getWindDegree(void){
     return windDegree;
 }
 
-float getLong(void){
+char* getLong(void){
 	return longitude;
 }
 
-float getLat(void){
+char* getLat(void){
 	return latitude;
 }
 
@@ -475,6 +512,10 @@ float getSpeed(void){
 }
 
 void setCompassDegree(float f) {
+    if (f == 90 || f == 0 || f == 180 || f == 45 || f == 360 || f < 0 || f > 360)
+        compassDegree = -1;
+    else
+        compassDegree = f;
 //    f = (int)f;
 //    if (f < 0 || f > 360)
 //        return;
@@ -498,7 +539,6 @@ void setCompassDegree(float f) {
 //    }
 //    compassDarr[compassDidx] = (int) (f * 10);
 //    ++compassDidx;
-    compassDegree = f;
 }
 
 float getCompassDegree(void) {

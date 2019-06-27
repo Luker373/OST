@@ -44,13 +44,13 @@
 
 
 #define DELTA_T 0.05
+#define delta_bt 0.1
 
 int main(void) {
     int i, j, k;
     char status[100];
 
     BOARD_Init();
-    PutChar(2, 'i');
     AD_Init();
     AD_AddPins(AD_A2);
     INCAP_Init();
@@ -67,28 +67,41 @@ int main(void) {
     int delay = 100;
     float freq = 0, degree = 0, windSpeed = 0;
     unsigned int degVal = 0, numSamples = 0;
-
-
+    int delay_bt = 100;
+    double prev_end_bt = 0;
+    int t = 0;
     char str[100] = "startup";
     while (1) {
-
         if (UpdateDataBuffer(1, 100)) {
-            //if (j == 100000){
             j = 0;
             GetDataBuffer(1, gpsPacket);
             processSentence(gpsPacket);
             createGNOST(gnost);
-            //            createGNTST(gntst);
+//            if (t == 10)
+//                t = 0;
+//            PutChar(2,t+48);
+//            t++;
             for (i = 0; i < strlen(gnost); i++) {
                 PutChar(2, gnost[i]);
             }
-            //            for(i = 0; i < strlen(gntst); i++){
-            //                PutChar(2, gntst[i]);
-            //            }
-            //for(i =0; i < 1000; ++i);
-        }
 
+        }
         // accumulate average over delay period
+        //TIMERS_GetMilliSeconds();
+        
+//        if (TIMERS_GetMilliSeconds() - prev_end_bt >= delta_bt * 10000){
+//            if (t == 10)
+//                t = 0;
+//            //PutChar(2,t+48);
+//            
+//            for (i = 0; i < strlen(gnost); i++) {
+//                PutChar(2, gnost[i]);
+//            }
+//            //PutChar(2,t+48);
+//            t++;
+//            prev_end_bt = TIMERS_GetMilliSeconds();
+//        }
+        
         if (delay >= TIMERS_GetMilliSeconds()) {
             degVal = AD_ReadADPin(AD_A2);
             freq += INCAP_getFreq() / 1000.000;
